@@ -1,0 +1,28 @@
+manifest:
+  project_id: braim
+  canonical_name: BRAIM
+  release_name: BRAIM Public Documentation Preview
+  release_version: 0.1.0
+  cde_state: PUBLISHED
+  visibility: PUBLIC
+  maturity: CONCEPT_AND_PROTOTYPE
+  normative_authority: false
+  external_ai_analysis: ALLOWED
+  production_use: NOT_RECOMMENDED
+  last_reviewed_at: 2026-09-28
+
+publication_policy:
+  allowed_states: [PUBLISHED, RELEASED]
+  required_flags:
+    public_allowed: true
+    security_scan: PASS
+    secrets_scan: PASS
+    license_check: PASS
+    source_references_reviewed: true
+  forbidden_content:
+    - personal_data
+    - client_models
+    - credentials
+    - private_project_data
+    - full_protected_normative_copies
+    - unreviewed_ai_claims_as_normative_facts
