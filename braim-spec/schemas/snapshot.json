@@ -1,0 +1,152 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://baim.dev/schemas/snapshot.json",
+  "title": "BRAIM Iteration Snapshot",
+  "description": "Неизменяемый снимок проектной итерации BRAIM",
+  "type": "object",
+  "required": [
+    "snapshot_id",
+    "iteration_code",
+    "snapshot_schema_version",
+    "state",
+    "content_digest",
+    "project_id",
+    "created_at",
+    "provenance",
+    "quality_gate_ref"
+  ],
+  "properties": {
+    "snapshot_id": {
+      "type": "string",
+      "description": "Глобальный уникальный идентификатор снапшота",
+      "pattern": "^snp_[0-9a-zA-Z]{20,}$"
+    },
+    "iteration_code": {
+      "type": "string",
+      "description": "Человекочитаемый код итерации (счётчик снимков)",
+      "pattern": "^IT\\d{3}$"
+    },
+    "snapshot_schema_version": {
+      "type": "string",
+      "description": "Версия схемы снапшота",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "state": {
+      "type": "string",
+      "enum": ["candidate", "sealed", "superseded"],
+      "description": "Состояние снапшота"
+    },
+    "content_digest": {
+      "type": "string",
+      "description": "Канонический хэш содержимого снапшота",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "project_id": {
+      "type": "string",
+      "description": "Идентификатор проекта"
+    },
+    "parent_snapshot_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Ссылки на родительские снапшоты (DAG)",
+      "minItems": 0
+    },
+    "artifact_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Ссылки на artifact_id в этом снапшоте"
+    },
+    "policy_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Ссылки на policy_pack_digest, использованные в снапшоте"
+    },
+    "validation_run_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Ссылки на validation_run_id"
+    },
+    "decision_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Ссылки на decision_id"
+    },
+    "quality_gate_ref": {
+      "type": "string",
+      "description": "Ссылка на quality_gate_id"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp создания снапшота"
+    },
+    "sealed_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp sealing (опционально, только для state=sealed)"
+    },
+    "provenance": {
+      "type": "object",
+      "required": [
+        "source_schema",
+        "adapter_version",
+        "mapping_profile_digest"
+      ],
+      "properties": {
+        "source_schema": {
+          "type": "string",
+          "enum": ["IFC2X3", "IFC4", "IFC4X3", "IFC5_ALPHA"],
+          "description": "Исходная IFC-схема"
+        },
+        "adapter_version": {
+          "type": "string",
+          "description": "Версия ingestion adapter",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "mapping_profile_digest": {
+          "type": "string",
+          "description": "Хэш профиля маппинга (IFC→CBIM→Graph)",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "graph_projection_version": {
+          "type": "string",
+          "description": "Версия граф-проекции (опционально)"
+        }
+      }
+    },
+    "signatures": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["signer_id", "signature", "signed_at"],
+        "properties": {
+          "signer_id": {
+            "type": "string"
+          },
+          "signature": {
+            "type": "string"
+          },
+          "signed_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "key_id": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Технические подписи целостности (опционально)"
+    }
+  },
+  "additionalProperties": false
+}
