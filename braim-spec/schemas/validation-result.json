@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://baim.dev/schemas/validation-result.json",
+  "title": "BRAIM Validation Result",
+  "description": "Результат прогона валидации (IDS, topology, geometry, domain)",
+  "type": "object",
+  "required": ["validation_run_id", "validation_type", "artifact_ref", "policy_pack_digest", "started_at", "completed_at", "state", "summary"],
+  "properties": {
+    "validation_run_id": {"type": "string", "pattern": "^val_[0-9a-zA-Z]{20,}$"},
+    "validation_type": {"type": "string", "enum": ["ids", "topology", "geometry", "integrity", "domain"]},
+    "artifact_ref": {"type": "string"},
+    "policy_pack_digest": {"type": "string"},
+    "validator_image_digest": {"type": "string"},
+    "started_at": {"type": "string", "format": "date-time"},
+    "completed_at": {"type": "string", "format": "date-time"},
+    "state": {"type": "string", "enum": ["running", "completed", "failed", "timeout"]},
+    "summary": {
+      "type": "object",
+      "required": ["total_rules", "passed", "failed", "warnings"],
+      "properties": {
+        "total_rules": {"type": "integer"},
+        "passed": {"type": "integer"},
+        "failed": {"type": "integer"},
+        "warnings": {"type": "integer"},
+        "blocking_findings": {"type": "integer"},
+        "major_findings": {"type": "integer"},
+        "minor_findings": {"type": "integer"}
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["finding_id", "rule_id", "severity", "message"],
+        "properties": {
+          "finding_id": {"type": "string"},
+          "rule_id": {"type": "string"},
+          "severity": {"type": "string", "enum": ["critical", "major", "minor", "information"]},
+          "message": {"type": "string"},
+          "affected_guids": {"type": "array", "items": {"type": "string"}},
+          "bcf_topic_id": {"type": "string"},
+          "location": {"type": "object", "properties": {"ifc_class": {"type": "string"}, "step_id": {"type": "integer"}}}
+        }
+      }
+    },
+    "bcf_export_ref": {"type": "string"},
+    "json_report_ref": {"type": "string"},
+    "error": {"type": "object", "properties": {"code": {"type": "string"}, "message": {"type": "string"}}}
+  },
+  "additionalProperties": false
+}
