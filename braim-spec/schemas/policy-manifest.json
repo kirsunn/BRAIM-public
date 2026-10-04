@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://baim.dev/schemas/policy-manifest.json",
+  "title": "BRAIM Policy Pack Manifest",
+  "description": "Манифест версионированного policy pack (правила, версии, хэши)",
+  "type": "object",
+  "required": ["policy_pack_id", "policy_pack_digest", "version", "created_at", "rules"],
+  "properties": {
+    "policy_pack_id": {"type": "string", "pattern": "^pp_[0-9a-zA-Z]{20,}$"},
+    "policy_pack_digest": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+    "version": {"type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$"},
+    "name": {"type": "string"},
+    "description": {"type": "string"},
+    "created_at": {"type": "string", "format": "date-time"},
+    "created_by": {"type": "string"},
+    "policy_type": {"type": "string", "enum": ["ids", "topology", "geometry", "integrity", "domain", "thermal"]},
+    "scope": {
+      "type": "object",
+      "properties": {
+        "ifc_schemas": {"type": "array", "items": {"type": "string", "enum": ["IFC2X3", "IFC4", "IFC4X3", "IFC5_ALPHA"]}},
+        "disciplines": {"type": "array", "items": {"type": "string", "enum": ["architectural", "structural", "mep", "general"]}},
+        "building_types": {"type": "array", "items": {"type": "string"}},
+        "climate_zones": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["rule_id", "version", "source", "severity"],
+        "properties": {
+          "rule_id": {"type": "string"},
+          "version": {"type": "string"},
+          "source": {"type": "string"},
+          "severity": {"type": "string", "enum": ["critical", "major", "minor", "information"]},
+          "description": {"type": "string"},
+          "norm_source": {"type": "string"},
+          "source_edition": {"type": "string"},
+          "source_clause": {"type": "string"},
+          "applicability": {"type": "string"},
+          "input_mapping": {"type": "string"},
+          "tolerance": {"type": "object", "properties": {"value": {"type": "number"}, "unit": {"type": "string"}}},
+          "responsible_expert_role": {"type": "string"},
+          "test_cases": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "validator_image_digest": {"type": "string"},
+    "ids_profile_refs": {"type": "array", "items": {"type": "string"}},
+    "deprecated": {"type": "boolean"},
+    "superseded_by": {"type": "string"}
+  },
+  "additionalProperties": false
+}
