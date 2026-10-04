@@ -1,0 +1,160 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://baim.dev/schemas/artifact.json",
+  "title": "BRAIM Artifact",
+  "description": "Неизменяемый артефакт (IFC/IDS/BCF/report) в реестре BRAIM",
+  "type": "object",
+  "required": [
+    "artifact_id",
+    "artifact_type",
+    "artifact_sha256",
+    "source_schema",
+    "source_serialization",
+    "cde_ref",
+    "registered_at",
+    "state"
+  ],
+  "properties": {
+    "artifact_id": {
+      "type": "string",
+      "description": "Глобальный уникальный идентификатор артефакта",
+      "pattern": "^art_[0-9a-zA-Z]{20,}$"
+    },
+    "artifact_type": {
+      "type": "string",
+      "enum": ["ifc", "ids", "bcf", "report"],
+      "description": "Тип артефакта"
+    },
+    "artifact_sha256": {
+      "type": "string",
+      "description": "SHA-256 хэш содержимого артефакта",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "source_schema": {
+      "type": "string",
+      "enum": ["IFC2X3", "IFC4", "IFC4X3", "IFC5_ALPHA", "IDS1.0", "BCF3.0"],
+      "description": "Исходная схема артефакта"
+    },
+    "source_serialization": {
+      "type": "string",
+      "enum": ["SPF", "XML", "JSON", "ZIP"],
+      "description": "Формат сериализации (SPF, XML, JSON, ZIP)"
+    },
+    "cde_ref": {
+      "type": "object",
+      "required": ["cde_system", "container_id", "version"],
+      "description": "Ссылка на CDE-контейнер (master)",
+      "properties": {
+        "cde_system": {
+          "type": "string",
+          "description": "Идентификатор CDE-системы (например, pilot-bim, renga-cde)"
+        },
+        "container_id": {
+          "type": "string",
+          "description": "Идентификатор контейнера в CDE"
+        },
+        "version": {
+          "type": "string",
+          "description": "Версия контейнера в CDE"
+        },
+        "uri": {
+          "type": "string",
+          "format": "uri",
+          "description": "Прямая ссылка на артефакт в CDE (опционально)"
+        }
+      }
+    },
+    "immutable_mirror_ref": {
+      "type": "object",
+      "description": "Ссылка на immutable mirror в object storage (опционально)",
+      "properties": {
+        "storage_system": {
+          "type": "string",
+          "enum": ["s3", "minio", "azure-blob", "gcs"]
+        },
+        "bucket": {
+          "type": "string"
+        },
+        "key": {
+          "type": "string"
+        },
+        "version_id": {
+          "type": "string"
+        }
+      }
+    },
+    "adapter_version": {
+      "type": "string",
+      "description": "Версия ingestion adapter",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "mapping_profile_digest": {
+      "type": "string",
+      "description": "Хэш профиля маппинга (IFC→CBIM)",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "loss_report": {
+      "type": "object",
+      "description": "Отчёт о потерях при импорте (если были)",
+      "properties": {
+        "unsupported_entities": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "unsupported_relations": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "warnings": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      }
+    },
+    "imported_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp импорта артефакта"
+    },
+    "registered_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp регистрации в BRAIM"
+    },
+    "state": {
+      "type": "string",
+      "enum": ["registered", "validated", "rejected", "archived"],
+      "description": "Состояние артефакта в реестре"
+    },
+    "validation_refs": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Ссылки на validation_run_id (опционально)"
+    },
+    "snapshot_refs": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Ссылки на snapshot_id, где используется артефакт (опционально)"
+    },
+    "provenance": {
+      "type": "object",
+      "description": "Дополнительная provenance-информация",
+      "properties": {
+        "author": {
+          "type": "string"
+        },
+        "organization": {
+          "type": "string"
+        },
+        "project_id": {
+          "type": "string"
+        },
+        "discipline": {
+          "type": "string",
+          "enum": ["architectural", "structural", "mep", "general"]
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}
