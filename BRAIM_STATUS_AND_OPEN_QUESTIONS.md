@@ -1,61 +1,161 @@
 # BRAIM Status and Open Questions
 
-## Статус
+**Статус:** Draft / рабочий документ  
+**Дата обновления:** 2026-10-04  
+**Версия:** 0.2.0
 
-- Версия: `0.1.0`
-- Дата: 2026-09-28
-- Release class: `CONCEPT_AND_PROTOTYPE`
-- Public status: `DOCUMENTATION_PREVIEW`
+---
 
-## Уже сформулировано
+## 1. Текущий статус
 
-- единая мультислойная сущность;
-- семантические слои `L0–L15`;
-- дисциплинарные представления `D0–D13`;
-- единый `instance_id` во всех представлениях;
-- источник истины и владелец атрибутов;
-- provenance, validation и verification;
-- микрокернельная архитектура, plugin manager, zero bus и оркестратор;
-- различение помещения, зоны, ниши, проёма и заполнения;
-- `PLAN_TO_FORM`, `FORM_TO_PLAN` и итерация планировка ↔ форма ↔ фасад;
-- геодезия, облака точек, scan-to-BIM и шестигранный swept-loop дом.
+### 1.1. Завершённые работы
 
-## Пока не реализовано
+| ID | Работа | Дата | Статус |
+|---|---|---|---|
+| W-01 | Создание репозитория `BRAIM-public` | 2026-09-30 | ✅ Done |
+| W-02 | Публикация Handover Package v1.0 | 2026-09-30 | ✅ Done |
+| W-03 | Публикация реестров (Attribute, Claim-Evidence, Model View, CDE State Machine) | 2026-09-30 | ✅ Done |
+| W-04 | Публикация Project Identity и CDE Manifest | 2026-09-30 | ✅ Done |
+| W-05 | Создание README.md с описанием проекта | 2026-10-04 | ✅ Done |
+| W-06 | Формализация концепции BRAIM Concept v1.0 | 2026-10-04 | ✅ Done |
 
-```text
-BRAIM Core runtime
-Schema Registry
-Attribute Registry
-Claim/Evidence Registry
-Model View Registry
-CDE state machine
-Dependency/impact engine
-JSON Schema tests
-Rules engine
-Topology-first layout solver
-Form-to-plan solver
-Plan-to-form solver
-Hexagonal form geometry engine
-Point cloud processing implementation
-Scan-to-BIM pipeline
-IFC4X3 implementation
-IDS/BCF integration
-Archicad connector
-Control Center
-Public release automation
-```
+### 1.2. В работе (Phase 0)
 
-## Открытые вопросы
+| ID | Работа | Плановая дата | Статус |
+|---|---|---|---|
+| P0-01 | Architecture freeze (Master Context 1.0) | 2026-10-04 | ✅ Done |
+| P0-02 | Публикация Concept v1.0 | 2026-10-04 | ✅ Done |
+| P0-03 | JSON Schema: artifact, snapshot, decision, event | 2026-10-11 | 🔄 In Progress |
+| P0-04 | BRAIM-LIMS 0.1 (naming & versioning policy) | 2026-10-18 | 📋 Planned |
+| P0-05 | Standards/Claims/Grants registers (публичные) | 2026-10-18 | 📋 Planned |
+| P0-06 | Golden Corpus: структура и benchmark protocol | 2026-10-25 | 📋 Planned |
+| P0-07 | Toolchain SBOM и pinning (IfcOpenShell, IfcTester, Neo4j) | 2026-10-25 | 📋 Planned |
+| P0-08 | CDE capability discovery (первый пилот) | 2026-11-01 | 📋 Planned |
 
-1. Утвердить английскую расшифровку BRAIM.
-2. Утвердить окончательную структуру `L0–L15`.
-3. Утвердить набор дисциплин `D0–D13`.
-4. Решить, является ли IFC транспортом или внешним представлением.
-5. Определить canonical storage.
-6. Утвердить JSON Schema для сущности.
-7. Утвердить источники численных требований.
-8. Определить точную модель `Room` и `FunctionalRoom/FinishRoom`.
-9. Выбрать геометрический движок.
-10. Определить публичную лицензию.
+### 1.3. Зафиксированные решения (пилот)
 
-Ничего не считать реализованным только потому, что это описано в драфте. Документированная идея имеет статус `SPECIFIED`, пока не существуют schema, implementation, test и validation report.
+| ID | Решение | Статус |
+|---|---|---|
+| D-01 | CDE-master: CDE заказчика — контрактный master; BRAIM — immutable mirror + provenance | ✅ Подтверждено |
+| D-02 | Git scope: только код, схемы, policy packs, mappings, ADR, snapshots, Golden Corpus | ✅ Подтверждено |
+| D-03 | Strict Quality Gate: Critical→No-Go, Major→Hold, Minor→Go with findings | ✅ Подтверждено |
+| D-04 | KPI: только R&D targets, проверяются benchmark protocol | ✅ Подтверждено |
+| D-05 | Один глубокий пилот с реальным объектом и evidence chain | ✅ Подтверждено |
+| D-06 | Neo4j Community для MVP/Phase 1–2 | ✅ Подтверждено |
+
+---
+
+## 2. Открытые вопросы
+
+### 2.1. Архитектурные
+
+| ID | Вопрос | Влияние | Приоритет | Ответственный |
+|---|---|---|---|---|
+| AQ-01 | Выбор message broker для BuildBus (NATS vs RabbitMQ) | Фаза 1, транспорт | 🔴 Высокий | Архитектор |
+| AQ-02 | Transactional registry: PostgreSQL vs другой SQL | Фаза 1, хранение | 🔴 Высокий | Архитектор |
+| AQ-03 | Object storage: S3-compatible vs MinIO self-hosted | Фаза 1, артефакты | 🟡 Средний | DevOps |
+| AQ-04 | OIDC provider для аутентификации | Безопасность, Фаза 1 | 🟡 Средний | Security |
+
+### 2.2. IFC/Graph mapping
+
+| ID | Вопрос | Влияние | Приоритет | Ответственный |
+|---|---|---|---|---|
+| AQ-05 | Поддерживаемые IFC-классы для MVP mapping (D-01) | Фаза 1, граф | 🔴 Высокий | IFC-инженер |
+| AQ-06 | Mapping profile versioning и hashing strategy | Провенанс, Фаза 1 | 🟡 Средний | Архитектор |
+| AQ-07 | Обработка дубликатов GlobalId (ошибка vs warning) | Integrity check, Фаза 1 | 🟡 Средний | IFC-инженер |
+
+### 2.3. Validation & Quality Gate
+
+| ID | Вопрос | Влияние | Приоритет | Ответственный |
+|---|---|---|---|---|
+| AQ-08 | Минимальный набор IDS-профилей для MVP | Фаза 2, валидация | 🔴 Высокий | Domain expert |
+| AQ-09 | Topology validation: какие корни разрешены (IfcProject, IfcSite, IfcBuilding)? | D-03, Фаза 2 | 🟡 Средний | Архитектор |
+| AQ-10 | BCF 3.0 adapter: нативный API vs BCFzip fallback | CDE integration, Фаза 2 | 🟡 Средний | Integration |
+
+### 2.4. CDE Integration
+
+| ID | Вопрос | Влияние | Приоритет | Ответственный |
+|---|---|---|---|---|
+| AQ-11 | Первый пилот: какой CDE у заказчика? (Pilot-BIM, Renga, другое) | Пилот, Фаза 0 | 🔴 Высокий | PM |
+| AQ-12 | Capability manifest: какие API доступны? (webhooks, polling, BCF) | Adapter design, Фаза 0 | 🔴 Высокий | Integration |
+| AQ-13 | Immutable mirror: object storage у заказчика или BRAIM? | Storage architecture, Фаза 0 | 🟡 Средний | DevOps |
+
+### 2.5. Standards & Compliance
+
+| ID | Вопрос | Влияние | Приоритет | Ответственный |
+|---|---|---|---|---|
+| AQ-14 | СП 50.13330.2024: какие климатические зоны для пилота? | Thermal policy, Фаза 2 | 🟡 Средний | Domain expert |
+| AQ-15 | Классификация: КСИ vs Uniclass vs другая | Classification policy, Фаза 1 | 🟢 Низкий | Domain expert |
+
+### 2.6. Security & Licensing
+
+| ID | Вопрос | Влияние | Приоритет | Ответственный |
+|---|---|---|---|---|
+| AQ-16 | Threat model: какая классификация данных для пилота? | Security baseline, Фаза 0 | 🔴 Высокий | Security |
+| AQ-17 | SBOM: лицензии IfcOpenShell (LGPL), Neo4j Community (GPL) | Compliance, Фаза 0 | 🟡 Средний | Legal/DevOps |
+| AQ-18 | Container digests: pinning strategy для workers | Reproducibility, Фаза 1 | 🟡 Средний | DevOps |
+
+---
+
+## 3. Решения, требующие подтверждения
+
+| ID | Решение | Варианты | Дедлайн | Статус |
+|---|---|---|---|---|
+| AD-01 | Message broker | NATS / RabbitMQ / другой | 2026-10-18 | ⏳ Pending |
+| AD-02 | Transactional registry | PostgreSQL / другой SQL | 2026-10-18 | ⏳ Pending |
+| AD-03 | Первый пилот CDE | Pilot-BIM / Renga / другой | 2026-10-11 | ⏳ Pending |
+| AD-04 | OIDC provider | Keycloak / Auth0 / другой | 2026-10-25 | ⏳ Pending |
+
+---
+
+## 4. Риски
+
+| Risk ID | Risk | Control | Статус |
+|---|---|---|---|
+| R-01 | IFC5 immaturity | Sandbox adapter only; no production dependency | 🟡 Мониторинг |
+| R-02 | CDE API mismatch | Capability manifest + BCF/file fallback | 🟡 Мониторинг |
+| R-03 | Experimental merge (ifcmerge) | Report-only diff; manual resolution; Golden Corpus | 🟡 Мониторинг |
+| R-11 | KPI overclaim | R&D target label + benchmark protocol | 🟡 Мониторинг |
+| R-16 | Threat model не определён | Требуется до начала пилота | 🔴 Блокирующий |
+| R-17 | Licence conflict (LGPL/GPL) | SBOM + legal review перед пилотом | 🟡 Мониторинг |
+
+---
+
+## 5. Следующие действия
+
+### Ближайшие 2 недели (до 2026-10-18)
+
+1. ✅ **Завершено:** README.md и BRAIM_Concept_v1.0.md опубликованы.
+2. 🔄 **В работе:** JSON Schema для artifact, snapshot, decision, event.
+3. 📋 **План:** BRAIM-LIMS 0.1 (naming & versioning policy).
+4. 📋 **План:** Standards/Claims/Grants registers (публичные версии).
+5. 🔴 **Блокер:** Выбрать первый пилот CDE (AQ-11, AD-03).
+6. 🔴 **Блокер:** Определить threat model и классификацию данных (AQ-16).
+
+### Ближайшие 4 недели (до 2026-11-01)
+
+1. Завершить Phase 0: architecture freeze, schemas, BRAIM-LIMS 0.1.
+2. Подготовить Golden Corpus структуру и benchmark protocol.
+3. Завершить toolchain SBOM и pinning.
+4. Провести CDE capability discovery для первого пилота.
+
+---
+
+## 6. Changelog
+
+### 0.2.0 — 2026-10-04
+
+- Добавлены завершённые работы W-05, W-06 (README, Concept v1.0).
+- Обновлён статус Phase 0: P0-01, P0-02 завершены.
+- Добавлены открытые вопросы AQ-01..AQ-18.
+- Добавлены решения, требующие подтверждения (AD-01..AD-04).
+- Обновлены риски с ссылками на Master Context.
+- Обновлены следующие действия с дедлайнами.
+
+### 0.1.0 — 2026-09-30
+
+- Первоначальная публикация статуса и открытых вопросов.
+
+---
+
+*Последнее обновление: 2026-10-04*
