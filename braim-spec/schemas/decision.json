@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://baim.dev/schemas/decision.json",
+  "title": "BRAIM Decision",
+  "description": "Решение Quality Gate или waiver/approval",
+  "type": "object",
+  "required": [
+    "decision_id",
+    "decision_type",
+    "outcome",
+    "snapshot_id",
+    "decided_at",
+    "decided_by"
+  ],
+  "properties": {
+    "decision_id": {
+      "type": "string",
+      "pattern": "^dec_[0-9a-zA-Z]{20,}$"
+    },
+    "decision_type": {
+      "type": "string",
+      "enum": ["quality_gate", "waiver", "approval"]
+    },
+    "outcome": {
+      "type": "string",
+      "enum": ["go", "no_go", "hold", "go_with_findings", "go_with_info", "waived", "approved", "rejected"]
+    },
+    "snapshot_id": {
+      "type": "string"
+    },
+    "validation_run_refs": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["finding_id", "rule_id", "severity", "description"],
+        "properties": {
+          "finding_id": {"type": "string"},
+          "rule_id": {"type": "string"},
+          "severity": {"type": "string", "enum": ["critical", "major", "minor", "information"]},
+          "description": {"type": "string"},
+          "artifact_ref": {"type": "string"},
+          "bcf_topic_id": {"type": "string"}
+        }
+      }
+    },
+    "waiver_ref": {
+      "type": "object",
+      "properties": {
+        "waiver_id": {"type": "string"},
+        "waived_by": {"type": "string"},
+        "waived_at": {"type": "string", "format": "date-time"},
+        "rationale": {"type": "string"}
+      }
+    },
+    "decided_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "decided_by": {
+      "type": "string"
+    },
+    "rationale": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}
