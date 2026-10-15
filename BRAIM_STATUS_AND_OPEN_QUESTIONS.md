@@ -109,8 +109,8 @@
 
 | ID | Решение | Варианты | Дедлайн | Статус |
 |---|---|---|---|---|
-| AD-01 | Message broker | NATS / RabbitMQ / другой | 2026-10-18 | ⏳ Pending (не блокирует Phase 1) |
-| AD-02 | Transactional registry | PostgreSQL / другой SQL | 2026-10-18 | ⏳ Pending (не блокирует Phase 1) |
+| AD-01 | Message broker | NATS / RabbitMQ / другой | 2026-10-18 | ✅ Решено ([ADR-013](./docs/adr/ADR-013_full_stack.md): NATS, Phase 3) |
+| AD-02 | Transactional registry | PostgreSQL / другой SQL | 2026-10-18 | ✅ Решено ([ADR-013](./docs/adr/ADR-013_full_stack.md): PostgreSQL 16) |
 | AD-03 | Первый пилот CDE | Pilot-BIM / Renga / другой | 2026-10-11 | ✅ **Решено 2026-10-15: заказчиком будем мы.** Фолбэк (собственное файловое хранилище + BCFzip/file-drop) — primary для Phase 1; пилотный объект — собственная АГР-модель; внешний CDE заказчика подключается адаптером в будущем (см. AQ-11/12) |
 | AD-04 | OIDC provider | Keycloak / Auth0 / другой | 2026-10-25 | ⏳ Pending (не блокирует Phase 1: solo-режим) |
 
