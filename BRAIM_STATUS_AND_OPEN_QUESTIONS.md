@@ -36,6 +36,9 @@
 | P0-11 | ADR-009: IFC5 sandbox + composition-native alignment (IFC5/IFC X — слои данных; production = IFC 4.x) | 2026-10-15 | ✅ Done ([`docs/adr/ADR-009`](./docs/adr/ADR-009_ifc5_sandbox_and_composition_alignment.md) — первый из 14 обязательных ADR) |
 | P0-12 | ADR-015: bSDD как базовый словарь (ISO 12006-3/23386; локальный реестр + bSDD-совместимость; с Phase 1; pinning словарей) | 2026-10-15 | ✅ Done ([`docs/adr/ADR-015`](./docs/adr/ADR-015_bsdd_as_base_dictionary.md); Attribute Registry → v0.1.1 `bsdd_property_ref`; Classification Model → v0.1.1) |
 | P0-13 | ADR-016: BRAIM Composition Format — IFCX-совместимая слоистая сериализация (path-узлы, imports, precedence внутри владельца; Project Package слоями — deliverable Phase 1) | 2026-10-15 | ✅ Done ([`docs/adr/ADR-016`](./docs/adr/ADR-016_ifcx_aligned_composition_format.md); референс IFC5-development → `_library/ifc5-reference`) |
+| P0-14 | **Concept v1.1**: §1.3 два режима, §1.4 вертикали, §1.5 guardrails G-1..G-7, D-07..D-11, §4.2 +стандарты, §8 EIM → G-D-C-M-P-R-V, §9.2 вехи под финансовую лестницу | 2026-10-15 | ✅ Done ([`BRAIM_Concept_v1.1.md`](./BRAIM_Concept_v1.1.md)) |
+| P0-15 | Схема validation-result.json: добавить `coverage_statement` (G-3) и `scope_element_ids`/инкрементальная инвалидация (G-4) | Phase 1 | 📋 Planned (реализация вместе с обёрткой IfcTester → validation-result) |
+| P0-16 | Threat model: раздел DataBoundaryPolicy (G-6) — CLIENT_CONFIDENTIAL по умолчанию, публичные ИИ-сервисы запрещены | Phase 1 | 📋 Planned (расширение docs/security/THREAT_MODEL_v0_1.md) |
 
 ### 1.3. Зафиксированные решения (пилот)
 
@@ -130,7 +133,7 @@
 
 ### Ближайшие 2 недели (до 2026-10-18)
 
-1. ✅ **Завершено:** README.md и BRAIM_Concept_v1.0.md опубликованы.
+1. ✅ **Завершено:** README.md и BRAIM_Concept_v1.1.md опубликованы.
 2. ✅ **Завершено (2026-10-15):** JSON Schema — artifact, snapshot, decision, event, validation-result, policy-manifest (см. [`braim-spec/schemas/`](./braim-spec/schemas/)).
 3. 📋 **План:** BRAIM-LIMS 0.1 (naming & versioning policy).
 4. 📋 **План:** Standards/Claims/Grants registers (публичные версии).
@@ -149,6 +152,11 @@
 ---
 
 ## 6. Changelog
+
+### 0.3.0 — 2026-10-15
+
+- P0-14 выполнен: **BRAIM_Concept_v1.1.md** (файл переименован, ссылки обновлены): §1.3 два режима работы, §1.4 пять вертикалей применения, §1.5 архитектурные ограждения G-1..G-7 (многоредакционность нормативов, мета-валидация политик, coverage statement, инкрементальность, ИИ-акторы в provenance, граница данных, registry-ready), решения D-07..D-11, §4.2 дополнен стандартами (ISO 12006-2/3, ISO 23386, RFC 7946 + профиль АГР, требования Москвы ЦИМ АГР), §8 EIM переведён на G-D-C-M-P-R-V (G-I-C-A удалена), §9.2 вехи переписаны под финансовую лестницу (v1.0 M0/M1 отменены).
+- P0-15/P0-16 запланированы: расширение схемы validation-result (coverage_statement, scope_element_ids) и Threat Model (DataBoundaryPolicy) — при реализации Phase 1.
 
 ### 0.2.9 — 2026-10-15
 

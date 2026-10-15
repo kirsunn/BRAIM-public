@@ -15,7 +15,7 @@
 
 | Документ | Описание |
 |---|---|
-| [`BRAIM_Concept_v1.0.md`](./BRAIM_Concept_v1.0.md) | Формализованная концепция продукта, архитектура, решения, roadmap. |
+| [`BRAIM_Concept_v1.1.md`](./BRAIM_Concept_v1.1.md) | Формализованная концепция продукта, архитектура, решения, roadmap. |
 | [`BRAIM_Handover_Package_v1.0_2026-09-30.md`](./BRAIM_Handover_Package_v1.0_2026-09-30.md) | Основной пакет передачи (handover) для пилота. |
 | [`BRAIM_Master_Context_1.0_2026-09-30.md`](./BRAIM_Master_Context_1.0_2026-09-30.md) | Единый рабочий архитектурный baseline (локальный master). |
 | [`BRAIM_STATUS_AND_OPEN_QUESTIONS.md`](./BRAIM_STATUS_AND_OPEN_QUESTIONS.md) | Текущий статус и открытые вопросы. |
