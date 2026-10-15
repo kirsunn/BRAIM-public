@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://baim.dev/schemas/snapshot.json",
+  "$id": "https://braim.dev/schemas/snapshot.json",
   "title": "BRAIM Iteration Snapshot",
   "description": "Неизменяемый снимок проектной итерации BRAIM",
   "type": "object",

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://baim.dev/schemas/decision.json",
+  "$id": "https://braim.dev/schemas/decision.json",
   "title": "BRAIM Decision",
   "description": "Решение Quality Gate или waiver/approval",
   "type": "object",

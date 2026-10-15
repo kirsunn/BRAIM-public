@@ -25,7 +25,7 @@
 |---|---|---|---|
 | P0-01 | Architecture freeze (Master Context 1.0) | 2026-10-04 | ✅ Done |
 | P0-02 | Публикация Concept v1.0 | 2026-10-04 | ✅ Done |
-| P0-03 | JSON Schema: artifact, snapshot, decision, event | 2026-10-11 | 🔄 In Progress |
+| P0-03 | JSON Schema: artifact, snapshot, decision, event | 2026-10-11 | ✅ Done (2026-10-15: опубликованы в [`braim-spec/schemas/`](./braim-spec/schemas/) — artifact, snapshot, decision, event, validation-result, policy-manifest) |
 | P0-04 | BRAIM-LIMS 0.1 (naming & versioning policy) | 2026-10-18 | 📋 Planned |
 | P0-05 | Standards/Claims/Grants registers (публичные) | 2026-10-18 | 📋 Planned |
 | P0-06 | Golden Corpus: структура и benchmark protocol | 2026-10-25 | 📋 Planned |
@@ -126,11 +126,13 @@
 ### Ближайшие 2 недели (до 2026-10-18)
 
 1. ✅ **Завершено:** README.md и BRAIM_Concept_v1.0.md опубликованы.
-2. 🔄 **В работе:** JSON Schema для artifact, snapshot, decision, event.
+2. ✅ **Завершено (2026-10-15):** JSON Schema — artifact, snapshot, decision, event, validation-result, policy-manifest (см. [`braim-spec/schemas/`](./braim-spec/schemas/)).
 3. 📋 **План:** BRAIM-LIMS 0.1 (naming & versioning policy).
 4. 📋 **План:** Standards/Claims/Grants registers (публичные версии).
-5. 🔴 **Блокер:** Выбрать первый пилот CDE (AQ-11, AD-03).
+5. 🔴 **Блокер:** Выбрать первый пилот CDE (AQ-11, AD-03) — с fallback-вариантом (S3-compatible + BCFzip/file-drop), чтобы Phase 1 не блокировалась на решении заказчика.
 6. 🔴 **Блокер:** Определить threat model и классификацию данных (AQ-16).
+
+> **Финансирование (2026-10-15):** заявка на соцконтракт подана; ООО — по факту участия/выигрыша грантов. Вехи M0/M1 из Concept v1.0 отменены — см. [`docs/funding/FUNDING_STATUS.md`](./docs/funding/FUNDING_STATUS.md).
 
 ### Ближайшие 4 недели (до 2026-11-01)
 
@@ -142,6 +144,13 @@
 ---
 
 ## 6. Changelog
+
+### 0.2.1 — 2026-10-15
+
+- P0-03 переведён в Done: JSON-схемы (artifact, snapshot, decision, event, validation-result, policy-manifest) опубликованы в braim-spec/schemas/.
+- $id схем переименован с baim.dev на braim.dev (решение об имени проекта: BRAIM).
+- Добавлены docs/funding/ (FUNDING_STATUS, дорожная карта запуска) и docs/history/ (критика, ревью, архивные контексты).
+- Финансовая лестница подтверждена: соцконтракт (заявка подана) → подготовка к грантам → ООО по факту участия/выигрыша; вехи M0/M1 Concept v1.0 отменены.
 
 ### 0.2.0 — 2026-10-04
 
@@ -158,4 +167,4 @@
 
 ---
 
-*Последнее обновление: 2026-10-04*
+*Последнее обновление: 2026-10-15*

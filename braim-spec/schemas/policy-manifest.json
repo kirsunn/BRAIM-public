@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://baim.dev/schemas/policy-manifest.json",
+  "$id": "https://braim.dev/schemas/policy-manifest.json",
   "title": "BRAIM Policy Pack Manifest",
   "description": "Манифест версионированного policy pack (правила, версии, хэши)",
   "type": "object",

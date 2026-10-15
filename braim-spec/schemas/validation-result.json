@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://baim.dev/schemas/validation-result.json",
+  "$id": "https://braim.dev/schemas/validation-result.json",
   "title": "BRAIM Validation Result",
   "description": "Результат прогона валидации (IDS, topology, geometry, domain)",
   "type": "object",
