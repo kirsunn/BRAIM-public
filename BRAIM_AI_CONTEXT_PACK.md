@@ -27,6 +27,8 @@ Do not treat the repository as a completed product. Treat it as a structured set
 
 ## Semantic layers
 
+> Канон — [`BRAIM_Layer_Model_v0_1.md`](./BRAIM_Layer_Model_v0_1.md) (v0.1.2). Старые коды L6-X graph, L7-O openings, L8-I infrastructure, L11-V generator, L14-E operation устарели и не используются.
+
 ```text
 L0-N normative
 L1-C canonical
@@ -34,16 +36,18 @@ L2-F functional
 L3-R requirements
 L4-G geometry
 L5-T topology
-L6-X graph
-L7-O openings
-L8-I infrastructure
+L6-X extended (уточнить)
+L7-O operational/occupancy
+L8-CST cost
 L9-B BIM/openBIM
 L10-A authoring
-L11-V generator
+L11-INT interior/finish (MVP-adjacent)
 L12-Q quality
 L13-D documentation
-L14-E operation
+L14-E energy/environmental
 L15-P provenance
+L16-GN generator (DEFERRED 2027+)
+L17-MEP MEP systems (RESERVED v0.2+)
 ```
 
 ## Discipline views
