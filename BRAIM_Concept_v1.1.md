@@ -277,15 +277,17 @@ V — Verification / field verification (V0–V5)
 
 ## 9. Roadmap & Milestones
 
-### 9.1. Phases
+### 9.1. Phases (обновлено 2026-10-15)
 
-| Фаза | Название | Длительность | Результат |
-|---|---|---|---|
-| 0 | Фундамент | 4–6 нед. | Naming, Snapshot Schema, BRAIM-LIMS 0.1, Golden Corpus | [file:103][file:104] |
-| 1 | Транспорт | 6–8 нед. | IFC→Neo4j, provenance, vertical slice | [file:103] |
-| 2 | Валидация | 8–10 нед. | IDS, topology validator, BCF reports | [file:103] |
-| 3 | Оркестратор | 8–12 нед. | Quality Gate, BuildBus, snapshot manager | [file:103] |
-| 4 | UI | 6–8 нед. | Viewer, dashboard, evidence timeline | [file:103] |
+| Фаза | Название | Результат |
+|---|---|---|
+| 0 | Фундамент | Спек-ядро (✅ Concept v1.1, 7 схем, 3 ADR, 4 модели), LIMS-профиль совместимости с маской ЦИМ (`K01_XXX_П_X`), Standards Register, Golden Corpus (эталоны Москвы + FAIL-кейсы), SBOM, КСИ→bSDD-словарь |
+| 1 | Вертикальный срез | Обёртка IfcTester→validation-result (+coverage_statement, инкрементальность G-4); policy pack v0.1 = официальные IDS Москвы (meta-validated) + braim.py + AGR-GEOJSON; фолбэк-CDE + artifact registry; cross-artifact (GeoJSON↔ТЭП-XML↔IFC); BCF findings; sealed snapshot + provenance query; **демо для соцконтракта** |
+| 2 | Валидация | IDS × федерация + матрица пересечений (0/30/80), topology validator, benchmark protocol на корпусе, старт расчётного ядра (СП 50, эвакуация, МГН), Neo4j-проекция |
+| 3 | Оркестратор | Quality Gate, BuildBus (NATS), snapshot manager, waiver; seed документации (КМ/КМД) |
+| 4 | UI | Web-дашборд, viewer, evidence timeline, генерация ТЭП-ведомости |
+
+Режим Б (L16-GN, генерация по ТЗ) — 2027+, после Развитие-ЦТ (см. §1.3, D-07).
 
 ### 9.2. Milestones
 

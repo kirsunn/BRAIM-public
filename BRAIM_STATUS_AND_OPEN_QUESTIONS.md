@@ -129,25 +129,32 @@
 
 ---
 
-## 5. Следующие действия
+## 5. Следующие действия (обновлено 2026-10-15)
 
-### Ближайшие 2 недели (до 2026-10-18)
+### Завершено к 2026-10-15 (сводка)
 
-1. ✅ **Завершено:** README.md и BRAIM_Concept_v1.1.md опубликованы.
-2. ✅ **Завершено (2026-10-15):** JSON Schema — artifact, snapshot, decision, event, validation-result, policy-manifest (см. [`braim-spec/schemas/`](./braim-spec/schemas/)).
-3. 📋 **План:** BRAIM-LIMS 0.1 (naming & versioning policy).
-4. 📋 **План:** Standards/Claims/Grants registers (публичные версии).
-5. 🔴 **Блокер:** Выбрать первый пилот CDE (AQ-11, AD-03) — с fallback-вариантом (S3-compatible + BCFzip/file-drop), чтобы Phase 1 не блокировалась на решении заказчика.
-6. 🔴 **Блокер:** Определить threat model и классификацию данных (AQ-16).
+Спек-ядро закрыто: Concept v1.1 (два режима, вертикали, guardrails G-1..G-7), Lifecycle/Layer/Classification-модели, ADR-009/015/016, 7 JSON-схем, Attribute Registry v0.1.1. IDS-конвейер работает на официальных эталонах Москвы (~14,6 тыс. проверок; найден FAIL-кейс 3×IfcRailing). Threat model draft. Финансовая лестница зафиксирована (соцконтракт подан). Корпус наполовину собран (эталоны ЛК + Онежская 14Б).
 
-> **Финансирование (2026-10-15):** заявка на соцконтракт подана; ООО — по факту участия/выигрыша грантов. Вехи M0/M1 из Concept v1.0 отменены — см. [`docs/funding/FUNDING_STATUS.md`](./docs/funding/FUNDING_STATUS.md).
+### Phase 0 — остаток (до конца 2026)
 
-### Ближайшие 4 недели (до 2026-11-01)
+1. 📋 Standards Register v0.1 (P0-05): + стек Москвы (ПП 614, 783/пр, ГОСТ Р 10.0.02, ГОСТ Р 10.00.00.01-2025, ПНСТ 909, СП 59/333/331), СанПиН 1.2.3685-20, RFC 7946 + профиль АГР, ISO 12006-2/3, ISO 23386.
+2. 📋 Golden Corpus (P0-06): оформить структуру (эталоны + FAIL-кейсы + АГР-экспорты автора), benchmark protocol (baseline: 14,6k checks / 3,5 мин).
+3. 📋 BRAIM-LIMS 0.1 (P0-04): профиль совместимости с маской наименования ЦИМ (`K01_XXX_П_X`).
+4. 📋 SBOM + pinning (P0-07): ifcopenshell, ifctester, uv/tapir-mcp (интерактивный слой — вне production-зависимостей).
+5. 🔄 КСИ: завершить дамп → конвертер в bSDD import model → словарь ФНО.
+6. ✅ P0-08 (CDE discovery) закрыт: заказчик = мы, фолбэк-хранилище.
+7. ⏳ От автора: подтвердить threat model (бэкап, фолбэк-хранилище, шифрование диска); утвердить CHECKS_LIST; экспорты АГР-модели для корпуса.
 
-1. Завершить Phase 0: architecture freeze, schemas, BRAIM-LIMS 0.1.
-2. Подготовить Golden Corpus структуру и benchmark protocol.
-3. Завершить toolchain SBOM и pinning.
-4. Провести CDE capability discovery для первого пилота.
+### Phase 1 — вертикальный срез (дек 2026 – фев 2027, веха M1)
+
+1. Обёртка IfcTester → `validation-result.json` (+ coverage_statement P0-15, инкрементальность G-4).
+2. Policy pack v0.1: официальные IDS Москвы (digests + meta-validation G-2) + braim.py + AGR-GEOJSON.*.
+3. Фолбэк-хранилище (file-drop) + artifact registry.
+4. Cross-artifact: GeoJSON ↔ ТЭП-XML ↔ IFC.
+5. BCF findings (первый кейс — 3×IfcRailing).
+6. Sealed snapshot + provenance query. **Демо для соцконтракта.**
+
+> **Финансирование:** заявка на соцконтракт подана; ООО — по факту участия/выигрыша грантов. Вехи — [`BRAIM_Concept_v1.1.md`](./BRAIM_Concept_v1.1.md) §9.2 и [`docs/funding/FUNDING_STATUS.md`](./docs/funding/FUNDING_STATUS.md).
 
 ---
 
