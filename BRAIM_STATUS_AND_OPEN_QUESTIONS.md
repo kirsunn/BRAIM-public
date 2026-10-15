@@ -81,8 +81,8 @@
 
 | ID | Вопрос | Влияние | Приоритет | Ответственный |
 |---|---|---|---|---|
-| AQ-11 | Первый пилот: какой CDE у заказчика? (Pilot-BIM, Renga, другое) | Пилот, Фаза 0 | 🔴 Высокий | PM |
-| AQ-12 | Capability manifest: какие API доступны? (webhooks, polling, BCF) | Adapter design, Фаза 0 | 🔴 Высокий | Integration |
+| AQ-11 | Первый пилот: какой CDE у заказчика? (Pilot-BIM, Renga, другое) | Пилот, Фаза 0 | ✅ Решено 2026-10-15: заказчик = мы; пилотный объект — собственная АГР-модель (стадия концепции/АГР); AD-03 | — |
+| AQ-12 | Capability manifest: какие API доступны? (webhooks, polling, BCF) | Adapter design, Фаза 0 | 🟡 Снижен: для собственного хранилища capability manifest тривиален (файл-drop + BCFzip); остаётся открытым для будущего внешнего CDE | Integration |
 | AQ-13 | Immutable mirror: object storage у заказчика или BRAIM? | Storage architecture, Фаза 0 | 🟡 Средний | DevOps |
 
 ### 2.5. Standards & Compliance
@@ -106,10 +106,10 @@
 
 | ID | Решение | Варианты | Дедлайн | Статус |
 |---|---|---|---|---|
-| AD-01 | Message broker | NATS / RabbitMQ / другой | 2026-10-18 | ⏳ Pending |
-| AD-02 | Transactional registry | PostgreSQL / другой SQL | 2026-10-18 | ⏳ Pending |
-| AD-03 | Первый пилот CDE | Pilot-BIM / Renga / другой | 2026-10-11 | ⏳ Pending |
-| AD-04 | OIDC provider | Keycloak / Auth0 / другой | 2026-10-25 | ⏳ Pending |
+| AD-01 | Message broker | NATS / RabbitMQ / другой | 2026-10-18 | ⏳ Pending (не блокирует Phase 1) |
+| AD-02 | Transactional registry | PostgreSQL / другой SQL | 2026-10-18 | ⏳ Pending (не блокирует Phase 1) |
+| AD-03 | Первый пилот CDE | Pilot-BIM / Renga / другой | 2026-10-11 | ✅ **Решено 2026-10-15: заказчиком будем мы.** Фолбэк (собственное файловое хранилище + BCFzip/file-drop) — primary для Phase 1; пилотный объект — собственная АГР-модель; внешний CDE заказчика подключается адаптером в будущем (см. AQ-11/12) |
+| AD-04 | OIDC provider | Keycloak / Auth0 / другой | 2026-10-25 | ⏳ Pending (не блокирует Phase 1: solo-режим) |
 
 ---
 
@@ -121,7 +121,7 @@
 | R-02 | CDE API mismatch | Capability manifest + BCF/file fallback | 🟡 Мониторинг |
 | R-03 | Experimental merge (ifcmerge) | Report-only diff; manual resolution; Golden Corpus | 🟡 Мониторинг |
 | R-11 | KPI overclaim | R&D target label + benchmark protocol | 🟡 Мониторинг |
-| R-16 | Threat model не определён | Требуется до начала пилота | 🔴 Блокирующий |
+| R-16 | Threat model не определён | Draft подготовлен 2026-10-15 ([`docs/security/THREAT_MODEL_v0_1.md`](./docs/security/THREAT_MODEL_v0_1.md)) — требует подтверждения автора до первого артефакта пилота | 🟡 Draft (было 🔴 Блокирующий) |
 | R-17 | Licence conflict (LGPL/GPL) | SBOM + legal review перед пилотом | 🟡 Мониторинг |
 
 ---
@@ -149,6 +149,14 @@
 ---
 
 ## 6. Changelog
+
+### 0.2.7 — 2026-10-15
+
+- **Брифинг по распылению; работа по блокерам.**
+- AD-03 решён: **заказчиком будем мы** — фолбэк-хранилище (файл-drop + BCFzip) как primary для Phase 1; пилотный объект — собственная АГР-модель. AQ-11 закрыт, AQ-12 понижен.
+- R-16: draft threat model ([`docs/security/THREAT_MODEL_v0_1.md`](./docs/security/THREAT_MODEL_v0_1.md)) — открытые решения: бэкап, фолбэк-хранилище, шифрование диска.
+- Кандидаты проверок Phase 1 ([`docs/phase1/CHECKS_LIST_v0_1.md`](./docs/phase1/CHECKS_LIST_v0_1.md)): 6 готовы (braim.py + GEO-GRID), 4 — гибрид IDS + свои критерии (проёмы, проходы, ФЗ-123, МГН) со статусом `needs_source`; СП 59.13330 (МГН) — добавить в Standards Register.
+- AD-01/02/04 понижены: не блокируют Phase 1.
 
 ### 0.2.6 — 2026-10-15
 
