@@ -45,7 +45,7 @@
       "properties": {
         "system": {
           "type": "string",
-          "description": "Система таблицы: custom | KSI | CoClass | Uniclass | OmniClass | …"
+          "description": "Система таблицы: custom | KSI | bSDD | CoClass | Uniclass | OmniClass | …"
         },
         "edition": {
           "type": "string",

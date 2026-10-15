@@ -34,6 +34,7 @@
 | P0-09 | Lifecycle Model v0.1 (scoped LC, 6 статусов проверки, переходы как Decision+Snapshot) | 2026-10-15 | ✅ Done ([`BRAIM_Lifecycle_Model_v0_1.md`](./BRAIM_Lifecycle_Model_v0_1.md) + schema `lifecycle-state.json`) |
 | P0-10 | Classification Model v0.1 (фасетность ISO 12006-2; пилот FUNCTION+SPACE+DISCIPLINE; КСИ = таблица экспорта) | 2026-10-15 | ✅ Done ([`BRAIM_Classification_Model_v0_1.md`](./BRAIM_Classification_Model_v0_1.md) + schema `classification-assignment.json`) |
 | P0-11 | ADR-009: IFC5 sandbox + composition-native alignment (IFC5/IFC X — слои данных; production = IFC 4.x) | 2026-10-15 | ✅ Done ([`docs/adr/ADR-009`](./docs/adr/ADR-009_ifc5_sandbox_and_composition_alignment.md) — первый из 14 обязательных ADR) |
+| P0-12 | ADR-015: bSDD как базовый словарь (ISO 12006-3/23386; локальный реестр + bSDD-совместимость; с Phase 1; pinning словарей) | 2026-10-15 | ✅ Done ([`docs/adr/ADR-015`](./docs/adr/ADR-015_bsdd_as_base_dictionary.md); Attribute Registry → v0.1.1 `bsdd_property_ref`; Classification Model → v0.1.1) |
 
 ### 1.3. Зафиксированные решения (пилот)
 
@@ -147,6 +148,13 @@
 ---
 
 ## 6. Changelog
+
+### 0.2.5 — 2026-10-15
+
+- P0-12 выполнен: ADR-015 — bSDD (ISO 12006-3/23386) как базовый словарь. Решения DICT-01..06: локальный реестр с bSDD-совместимой моделью для проектных определений; подключение с Phase 1; pinning редакций словарей (runtime без внешнего сервиса); mapping классификаций через связи bSDD; языки пилота ru+en.
+- Attribute Registry → v0.1.1: поле `bsdd_property_ref`, правила 11–12 (DICT.DEFINITION_CONFLICT).
+- Classification Model → v0.1.1: table_ref.system += bSDD; mapping через связи bSDD.
+- Схема classification-assignment.json: описание system дополнено bSDD.
 
 ### 0.2.4 — 2026-10-15
 
