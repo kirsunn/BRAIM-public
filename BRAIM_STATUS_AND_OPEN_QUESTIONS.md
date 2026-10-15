@@ -35,6 +35,7 @@
 | P0-10 | Classification Model v0.1 (фасетность ISO 12006-2; пилот FUNCTION+SPACE+DISCIPLINE; КСИ = таблица экспорта) | 2026-10-15 | ✅ Done ([`BRAIM_Classification_Model_v0_1.md`](./BRAIM_Classification_Model_v0_1.md) + schema `classification-assignment.json`) |
 | P0-11 | ADR-009: IFC5 sandbox + composition-native alignment (IFC5/IFC X — слои данных; production = IFC 4.x) | 2026-10-15 | ✅ Done ([`docs/adr/ADR-009`](./docs/adr/ADR-009_ifc5_sandbox_and_composition_alignment.md) — первый из 14 обязательных ADR) |
 | P0-12 | ADR-015: bSDD как базовый словарь (ISO 12006-3/23386; локальный реестр + bSDD-совместимость; с Phase 1; pinning словарей) | 2026-10-15 | ✅ Done ([`docs/adr/ADR-015`](./docs/adr/ADR-015_bsdd_as_base_dictionary.md); Attribute Registry → v0.1.1 `bsdd_property_ref`; Classification Model → v0.1.1) |
+| P0-13 | ADR-016: BRAIM Composition Format — IFCX-совместимая слоистая сериализация (path-узлы, imports, precedence внутри владельца; Project Package слоями — deliverable Phase 1) | 2026-10-15 | ✅ Done ([`docs/adr/ADR-016`](./docs/adr/ADR-016_ifcx_aligned_composition_format.md); референс IFC5-development → `_library/ifc5-reference`) |
 
 ### 1.3. Зафиксированные решения (пилот)
 
@@ -148,6 +149,10 @@
 ---
 
 ## 6. Changelog
+
+### 0.2.6 — 2026-10-15
+
+- P0-13 выполнен: ADR-016 — BRAIM Composition Format, IFCX-совместимая слоистая сериализация собственных артефактов (path-узлы, imports по URI с pinned digests, локальные схемы, слоистый стек Project Package). Отличие от IFCX: precedence внутри владельца; cross-owner пересечение — конфликт с явным разрешением. Спецификация формата v0.1 — deliverable Phase 1. ADR-009 дополнен связью (v0.2). Референс IFC5-development склонирован в _library/ifc5-reference (вне git).
 
 ### 0.2.5 — 2026-10-15
 
