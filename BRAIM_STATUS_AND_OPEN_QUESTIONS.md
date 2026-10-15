@@ -31,6 +31,7 @@
 | P0-06 | Golden Corpus: структура и benchmark protocol | 2026-10-25 | 📋 Planned |
 | P0-07 | Toolchain SBOM и pinning (IfcOpenShell, IfcTester, Neo4j) | 2026-10-25 | 📋 Planned |
 | P0-08 | CDE capability discovery (первый пилот) | 2026-11-01 | 📋 Planned |
+| P0-09 | Lifecycle Model v0.1 (scoped LC, 6 статусов проверки, переходы как Decision+Snapshot) | 2026-10-15 | ✅ Done ([`BRAIM_Lifecycle_Model_v0_1.md`](./BRAIM_Lifecycle_Model_v0_1.md) + schema `lifecycle-state.json`) |
 
 ### 1.3. Зафиксированные решения (пилот)
 
@@ -144,6 +145,12 @@
 ---
 
 ## 6. Changelog
+
+### 0.2.2 — 2026-10-15
+
+- P0-09 выполнен: опубликован BRAIM_Lifecycle_Model_v0_1.md (решения LC-01..LC-07) и схема lifecycle-state.json.
+- Канонический набор статусов проверки: PASS/FAIL/UNKNOWN/INCOMPLETE/NOT_APPLICABLE/STALE; EIM v0.2 INDETERMINATE → UNKNOWN при следующей ревизии.
+- Открытые вопросы LCQ-01..05 (отображение стадий на нормативную стадийность, частичный STALE, роли участия, IFC-экспорт LC, BCF-связка).
 
 ### 0.2.1 — 2026-10-15
 

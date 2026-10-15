@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://braim.dev/schemas/lifecycle-state.json",
+  "title": "BRAIM Lifecycle Statement",
+  "description": "Scoped-утверждение о фазе/стадии/статусе жизненного цикла scope в рамках итерации (см. BRAIM_Lifecycle_Model_v0_1.md)",
+  "type": "object",
+  "required": [
+    "lc_id",
+    "scope",
+    "iteration_ref",
+    "phase",
+    "stage",
+    "status",
+    "entered_at",
+    "entered_by"
+  ],
+  "properties": {
+    "lc_id": {
+      "type": "string",
+      "pattern": "^lc_[0-9a-zA-Z]{20,}$",
+      "description": "Глобальный уникальный идентификатор LC-утверждения"
+    },
+    "scope": {
+      "type": "object",
+      "required": ["kind", "ref"],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "project", "site", "facility", "building", "section", "storey",
+            "apartment", "space", "subzone", "system", "element", "work_package"
+          ]
+        },
+        "ref": {
+          "type": "string",
+          "description": "snapshotElementId / braimEntityId / идентификатор проекта"
+        },
+        "name": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "iteration_ref": {
+      "type": "string",
+      "description": "iteration_code (LIMS) или идентификатор итерации, к которой привязано утверждение"
+    },
+    "snapshot_id": {
+      "type": "string",
+      "description": "snp_… запечатанного снапшота, на котором утверждение истинно"
+    },
+    "phase": {
+      "type": "string",
+      "enum": ["DESIGN", "CONSTRUCTION", "OPERATION", "RECONSTRUCTION", "DEMOLITION"]
+    },
+    "stage": {
+      "type": "string",
+      "description": "Стадия внутри фазы; словарь по умолчанию — BRAIM_Lifecycle_Model_v0_1.md §3.2, конфигурируется проектной политикой"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["ACTIVE", "IN_TRANSITION", "VALIDATED", "APPROVED", "BLOCKED", "RETIRED"]
+    },
+    "transition_ref": {
+      "type": "string",
+      "description": "dec_… последнего решения, переведшего scope в это состояние"
+    },
+    "required_profile": {
+      "type": "string",
+      "description": "Требуемый EIM-профиль перехода, напр. G2-D1-C111-M3333-P33-R333-V0 (EIM v0.2)"
+    },
+    "gate_results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["rule_id", "result", "checked_at"],
+        "properties": {
+          "rule_id": {"type": "string"},
+          "result": {
+            "type": "string",
+            "enum": ["PASS", "FAIL", "UNKNOWN", "INCOMPLETE", "NOT_APPLICABLE", "STALE"]
+          },
+          "validation_run_id": {"type": "string"},
+          "checked_at": {"type": "string", "format": "date-time"},
+          "snapshot_id": {"type": "string"},
+          "policy_pack_digest": {"type": "string"},
+          "evidence_ref": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "art_… ссылки на артефакты-доказательства"
+    },
+    "notes": {"type": "string"},
+    "entered_at": {"type": "string", "format": "date-time"},
+    "entered_by": {
+      "type": "string",
+      "description": "Роль или actor, принявший состояние (напр. role:architect)"
+    }
+  },
+  "additionalProperties": false
+}
