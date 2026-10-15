@@ -285,7 +285,7 @@ V — Verification / field verification (V0–V5)
 | 1 | Вертикальный срез | Обёртка IfcTester→validation-result (+coverage_statement, инкрементальность G-4); policy pack v0.1 = официальные IDS Москвы (meta-validated) + braim.py + AGR-GEOJSON; фолбэк-CDE + artifact registry; cross-artifact (GeoJSON↔ТЭП-XML↔IFC); BCF findings; sealed snapshot + provenance query; **демо для соцконтракта** |
 | 2 | Валидация | IDS × федерация + матрица пересечений (0/30/80), topology validator, benchmark protocol на корпусе, старт расчётного ядра (СП 50, эвакуация, МГН), Neo4j-проекция |
 | 3 | Оркестратор | Quality Gate, BuildBus (NATS), snapshot manager, waiver; seed документации (КМ/КМД) |
-| 4 | UI | Web-дашборд, viewer, evidence timeline, генерация ТЭП-ведомости |
+| 4 | UI | **Node-canvas** (React Flow, философия Grasshopper/ComfyUI: каждый этап — управляемый узел с панелью и approve), стадийные панели: сверщик OCR (скан СП ↔ правило), планировка 2D/3D (граф вариантов), фасад 3D, таблицы ТЭП/расчётов с инвариантами, визуализация графов (провенанс, эргономика), timeline снапшотов с diff + панель Quality Gate (GO/NO-GO, LC-04); web-дашборд, IFC-viewer (web-ifc), генерация ТЭП-ведомости |
 
 Режим Б (L16-GN, генерация по ТЗ) — 2027+, после Развитие-ЦТ (см. §1.3, D-07).
 
