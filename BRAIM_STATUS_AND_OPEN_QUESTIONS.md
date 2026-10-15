@@ -32,6 +32,7 @@
 | P0-07 | Toolchain SBOM и pinning (IfcOpenShell, IfcTester, Neo4j) | 2026-10-25 | 📋 Planned |
 | P0-08 | CDE capability discovery (первый пилот) | 2026-11-01 | 📋 Planned |
 | P0-09 | Lifecycle Model v0.1 (scoped LC, 6 статусов проверки, переходы как Decision+Snapshot) | 2026-10-15 | ✅ Done ([`BRAIM_Lifecycle_Model_v0_1.md`](./BRAIM_Lifecycle_Model_v0_1.md) + schema `lifecycle-state.json`) |
+| P0-10 | Classification Model v0.1 (фасетность ISO 12006-2; пилот FUNCTION+SPACE+DISCIPLINE; КСИ = таблица экспорта) | 2026-10-15 | ✅ Done ([`BRAIM_Classification_Model_v0_1.md`](./BRAIM_Classification_Model_v0_1.md) + schema `classification-assignment.json`) |
 
 ### 1.3. Зафиксированные решения (пилот)
 
@@ -86,7 +87,7 @@
 | ID | Вопрос | Влияние | Приоритет | Ответственный |
 |---|---|---|---|---|
 | AQ-14 | СП 50.13330.2024: какие климатические зоны для пилота? | Thermal policy, Фаза 2 | 🟡 Средний | Domain expert |
-| AQ-15 | Классификация: КСИ vs Uniclass vs другая | Classification policy, Фаза 1 | 🟢 Низкий | Domain expert |
+| AQ-15 | Классификация: КСИ vs Uniclass vs другая | Classification policy, Фаза 1 | ✅ Решено 2026-10-15 ([Classification Model](./BRAIM_Classification_Model_v0_1.md) CL-01..07: фасетная методология ISO 12006-2; таблицы — конфигурация; КСИ = таблица экспорта) | — |
 
 ### 2.6. Security & Licensing
 
@@ -145,6 +146,12 @@
 ---
 
 ## 6. Changelog
+
+### 0.2.3 — 2026-10-15
+
+- P0-10 выполнен: BRAIM_Classification_Model_v0_1.md (решения CL-01..07, фасетность ISO 12006-2, CoClass как методологический референс) + схема classification-assignment.json.
+- AQ-15 закрыт: классификация — фасетная методология, таблицы конфигурируемы, КСИ — целевая таблица экспорта через versioned mapping profile.
+- Пилотные фасеты: FUNCTION, SPACE, DISCIPLINE; FORM/LOCATION/MATERIAL/PRODUCT — резерв до появления проверок.
 
 ### 0.2.2 — 2026-10-15
 

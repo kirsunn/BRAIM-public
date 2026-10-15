@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://braim.dev/schemas/classification-assignment.json",
+  "title": "BRAIM Classification Assignment",
+  "description": "Фасетная привязка сущности к коду классификационной таблицы (см. BRAIM_Classification_Model_v0_1.md)",
+  "type": "object",
+  "required": [
+    "assignment_id",
+    "entity_ref",
+    "facet",
+    "role",
+    "table_ref",
+    "code",
+    "assigned_at",
+    "assigned_by",
+    "source"
+  ],
+  "properties": {
+    "assignment_id": {
+      "type": "string",
+      "pattern": "^cls_[0-9a-zA-Z]{20,}$",
+      "description": "Глобальный уникальный идентификатор привязки"
+    },
+    "entity_ref": {
+      "type": "string",
+      "description": "instance_id сущности (ent_…)"
+    },
+    "snapshot_id": {
+      "type": "string",
+      "description": "snp_… снапшот, в контексте которого привязка истинна"
+    },
+    "facet": {
+      "type": "string",
+      "enum": ["FUNCTION", "SPACE", "FORM", "LOCATION", "MATERIAL", "PRODUCT", "DISCIPLINE"],
+      "description": "Фасет (ось классификации); активируются по CL-03"
+    },
+    "role": {
+      "type": "string",
+      "enum": ["primary", "alternate"],
+      "description": "Ровно один primary на пару (entity, facet)"
+    },
+    "table_ref": {
+      "type": "object",
+      "required": ["system", "edition"],
+      "properties": {
+        "system": {
+          "type": "string",
+          "description": "Система таблицы: custom | KSI | CoClass | Uniclass | OmniClass | …"
+        },
+        "edition": {
+          "type": "string",
+          "description": "Редакция таблицы (не переписывается при обновлении)"
+        },
+        "table": {"type": "string"},
+        "digest": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$",
+          "description": "Дайджест файла таблицы (версионирование как артефакт policy pack)"
+        }
+      },
+      "additionalProperties": false
+    },
+    "code": {
+      "type": "string",
+      "description": "Код в таблице"
+    },
+    "code_uri": {
+      "type": "string",
+      "format": "uri",
+      "description": "Резолвимый URI кода (транспортируется как IfcClassificationReference.Location)"
+    },
+    "assigned_at": {"type": "string", "format": "date-time"},
+    "assigned_by": {"type": "string"},
+    "source": {
+      "type": "string",
+      "enum": ["authoring", "rule", "manual", "imported"],
+      "description": "Происхождение привязки"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "superseded", "withdrawn"],
+      "description": "Историчность: смена редакции/кода не перезаписывает старые привязки"
+    },
+    "supersedes": {
+      "type": "string",
+      "description": "assignment_id предыдущей привязки, если эта её замещает"
+    },
+    "notes": {"type": "string"}
+  },
+  "additionalProperties": false
+}
