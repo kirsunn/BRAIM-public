@@ -33,6 +33,7 @@
 | P0-08 | CDE capability discovery (первый пилот) | 2026-11-01 | 📋 Planned |
 | P0-09 | Lifecycle Model v0.1 (scoped LC, 6 статусов проверки, переходы как Decision+Snapshot) | 2026-10-15 | ✅ Done ([`BRAIM_Lifecycle_Model_v0_1.md`](./BRAIM_Lifecycle_Model_v0_1.md) + schema `lifecycle-state.json`) |
 | P0-10 | Classification Model v0.1 (фасетность ISO 12006-2; пилот FUNCTION+SPACE+DISCIPLINE; КСИ = таблица экспорта) | 2026-10-15 | ✅ Done ([`BRAIM_Classification_Model_v0_1.md`](./BRAIM_Classification_Model_v0_1.md) + schema `classification-assignment.json`) |
+| P0-11 | ADR-009: IFC5 sandbox + composition-native alignment (IFC5/IFC X — слои данных; production = IFC 4.x) | 2026-10-15 | ✅ Done ([`docs/adr/ADR-009`](./docs/adr/ADR-009_ifc5_sandbox_and_composition_alignment.md) — первый из 14 обязательных ADR) |
 
 ### 1.3. Зафиксированные решения (пилот)
 
@@ -146,6 +147,10 @@
 ---
 
 ## 6. Changelog
+
+### 0.2.4 — 2026-10-15
+
+- P0-11 выполнен: ADR-009 (docs/adr/) — production остаётся на IFC 4.x; IFC5/IFC X — sandbox; зафиксированы 6 composition-native принципов (самодостаточные артефакты, identity вне монолита, provenance слоёв, конфликты явно, маппинг слоёв→проекций, инкрементальное обогащение) и триггеры пересмотра.
 
 ### 0.2.3 — 2026-10-15
 
