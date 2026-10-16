@@ -47,6 +47,36 @@ Human approval                → активация в policy pack
 - `validation-result.json` — finding ссылается на `criterion_id`;
 - G-1/G-2/G-5/R-05 — встроены в схему полями (`binding_context`, `verification`, `provenance.approved_by`).
 
+## 5.1. Выход конвейера №2: IDS по документу (решение автора 2026-10-16)
+
+Из каждого верифицированного нормативного документа конвейер генерирует **IDS-файл**: `СП_XXXXX → IDS-XXXXXX.ids` (напр. `IDS-SP54_13330_2022.ids`). Референс подхода — Москва: «АГР_Общие требования v9.ids» — это IDS, сделанный из документа требований; мы делаем то же для любых СП/СанПиН.
+
+**Маппинг критерий → IDS 1.0** (проверено прогоном на IDS Москвы):
+
+| norm-criterion | IDS | Ограничение |
+|---|---|---|
+| `applicability` (Ifc-сущности + условия) | `<specification><applicability>` (entity/property facets) | прямое |
+| `check.kind: threshold` (границы свойства) | `<requirement>` (property + xs:restriction) | прямое |
+| `check.kind: presence` | `<requirement>` minOccurs ≥ 1 | прямое |
+| `check.kind: computed` | **не поддерживается IDS** (cross-element) | BRAIM-воркер |
+| `check.kind: script` | **не поддерживается IDS** | BRAIM-воркер |
+
+Сгенерированный IDS проходит мета-валидацию (G-2: XSD + IfcTester smoke-test) и версионируется как артефакт policy pack. Прогон: `ifctester IDS-XXXXXX.ids model.ifc` → результаты сливаются с BRAIM-воркерами в общий `validation-result.json` (findings ссылаются на `criterion_id`).
+
+**Итоговая сборка конвейера:**
+
+```text
+PDF → OCR → Лингвист(Ollama) → Распознаватель → norm-criteria (YAML, git)
+   → [генератор] → IDS-XXXXXX.ids          (threshold/presence → IfcTester)
+   → [генератор] → BRAIM script checks      (computed/script → свои воркеры)
+   → [генератор] → bSDD import model        (словарь свойств BRAIM Pset)
+   → [генератор] → Cypher-seed              (граф-проекция зависимостей)
+```
+
 ## 6. Changelog
+
+### 0.1.1 — 2026-10-16
+
+- §5.1: выход конвейера №2 — генерация IDS по нормативному документу (маппинг threshold/presence → IDS, computed/script → BRAIM-воркеры; мета-валидация через XSD + IfcTester smoke-test).
 
 - 0.1 — 2026-10-16: модель принята (решение автора — формализовать артефакты до постройки конвейера); схема norm-criterion.json валидирована (threshold/computed примеры проходят, негативные отвергаются).
