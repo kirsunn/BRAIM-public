@@ -33,7 +33,14 @@
   "kind": "rosstandart_card",
   "url": null,
   "captured_at": "2026-10-17",
-  "captured_by": "author:paste"
+  "captured_by": "author:paste",
+  "machine_readable": {
+   "format": "rtf",
+   "path": "_library/normative/INBOX/SP-252.1325800.2016_v2016_ru/source.rtf",
+   "sha256": "bd4afd87dda8378b",
+   "extracted_to": "extraction/text_full.txt",
+   "extracted_size_bytes": 211451
+  }
  },
  "supersedes": [],
  "superseded_by": [],
@@ -41,14 +48,16 @@
   {
    "number": 1,
    "approved_by_prk": "—",
-   "approved_at": null,
-   "from_prk": "https://protect.gost.ru/"
+   "approved_at": "2018-12-26",
+   "from_prk": "https://protect.gost.ru/",
+   "note": "первое Изменение; упоминание в первоисточнике"
   },
   {
    "number": 2,
    "approved_by_prk": "—",
-   "approved_at": null,
-   "from_prk": null
+   "approved_at": "2018-12-26",
+   "from_prk": null,
+   "note": "второе Изменение; упоминание в первоисточнике (без отдельного приказа в выгрузке)"
   },
   {
    "number": 3,
@@ -56,7 +65,8 @@
    "approved_at": "2024-12-20",
    "from_prk": "https://protect.gost.ru/",
    "note": "АО «Кодекс» по состоянию на 11.02.2025",
-   "source_provided_by": "author"
+   "source_provided_by": "author:insights",
+   "source_doc": "rtf@bd4afd87dda8378b"
   }
  ]
 }
