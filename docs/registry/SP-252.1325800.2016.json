@@ -1,0 +1,62 @@
+{
+ "norm_id": "СП 252.1325800.2016",
+ "title_ru": "Здания дошкольных образовательных организаций. Правила проектирования",
+ "title_en": "Preschool educational institution buildings. Design rules",
+ "edition": "2016",
+ "status": "Действует",
+ "as_of": "2026-10-17",
+ "registry": {
+  "okp_oks": "91.040.99",
+  "okved": null,
+  "tech_committee": "465 — Строительство",
+  "developers": [
+   "ОАО «МНИИТЭП»",
+   "НИИ Гигиены и охраны здоровья детей и подростков",
+   "ЦНИИСК им. А.В. Кучеренко"
+  ]
+ },
+ "approval_prk": {
+  "number": "573/пр",
+  "date": "2016-08-17",
+  "issuer": "Минстрой России"
+ },
+ "effective_from": "2017-02-18",
+ "effective_until": null,
+ "applicability": "Настоящий свод правил распространяется на проектирование вновь строящихся и реконструируемых зданий ДОО всех организационно-правовых форм и форм собственности",
+ "keywords": [
+  "свод правил",
+  "дошкольные образовательные организации",
+  "типология",
+  "вариативные формы образования"
+ ],
+ "source": {
+  "kind": "rosstandart_card",
+  "url": null,
+  "captured_at": "2026-10-17",
+  "captured_by": "author:paste"
+ },
+ "supersedes": [],
+ "superseded_by": [],
+ "amendments": [
+  {
+   "number": 1,
+   "approved_by_prk": "—",
+   "approved_at": null,
+   "from_prk": "https://protect.gost.ru/"
+  },
+  {
+   "number": 2,
+   "approved_by_prk": "—",
+   "approved_at": null,
+   "from_prk": null
+  },
+  {
+   "number": 3,
+   "approved_by_prk": "887/пр",
+   "approved_at": "2024-12-20",
+   "from_prk": "https://protect.gost.ru/",
+   "note": "АО «Кодекс» по состоянию на 11.02.2025",
+   "source_provided_by": "author"
+  }
+ ]
+}
