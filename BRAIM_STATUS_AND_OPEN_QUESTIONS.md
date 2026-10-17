@@ -148,15 +148,17 @@
 6. ✅ P0-08 (CDE discovery) закрыт: заказчик = мы, фолбэк-хранилище.
 7. ⏳ От автора: подтвердить threat model (бэкап, фолбэк-хранилище, шифрование диска); утвердить CHECKS_LIST; экспорты АГР-модели для корпуса.
 
-### Phase 1 — вертикальный срез (дек 2026 – фев 2027, веха M1)
+### Phase 1 — вертикальный срез (дек 2026 – фев 2027, веха M0)
 
 1. Обёртка IfcTester → `validation-result.json` (+ coverage_statement P0-15, инкрементальность G-4).
-2. Policy pack v0.1: официальные IDS Москвы (digests + meta-validation G-2) + braim.py + AGR-GEOJSON.*.
-3. Фолбэк-хранилище (file-drop) + artifact registry.
-4. Cross-artifact: GeoJSON ↔ ТЭП-XML ↔ IFC.
-5. BCF findings (первый кейс — 3×IfcRailing).
-6. Sealed snapshot + provenance query.
-7. 🎯 **Найти заказ или пример объекта для подготовки модели к АГР** (F-08) — демо: «проверка АГР-модели по требованиям».
+2. ✅ **normpipe v0.1 готов (2026-10-17)**: конвейер оцифровки — Лингвист (Ollama локально) → Распознаватель (в схему norm-criterion.json) → генераторы: IDS-файл + bSDD import model + Cypher-граф. End-to-end смоук пройден (CIM_AGR.docx).
+3. Policy pack v0.1: официальные IDS Москвы (digests + meta-validation G-2) + braim.py + AGR-GEOJSON.* + **normbase seed** (19 критериев из Excel автора, needs_source → верификация P0-18).
+4. Фолбэк-хранилище (file-drop) + artifact registry.
+5. Cross-artifact: GeoJSON ↔ ТЭП-XML ↔ IFC.
+6. BCF findings (первый кейс — 3×IfcRailing).
+7. Sealed snapshot + provenance query.
+8. 🎯 **Найти заказ или пример объекта для подготовки модели к АГР** (F-08) — демо: «проверка АГР-модели по требованиям».
+9. ✅ Локальный ИИ-слой: Ollama + qwen3b/7b развёрнуты (G-6 технически реализован); качество Лингвиста — 7B (3B — нижняя планка).
 
 > **Финансирование:** заявка на соцконтракт подана; ООО — по факту участия/выигрыша грантов. Вехи — [`BRAIM_Concept_v1.1.md`](./BRAIM_Concept_v1.1.md) §9.2 и [`docs/funding/FUNDING_STATUS.md`](./docs/funding/FUNDING_STATUS.md).
 
