@@ -53,6 +53,7 @@
 | P0-28 | **Регистратор** (P0-28) — пополнение StandardsRegistry; единственная роль с правом `REQUIRES_MORE_INFO` (NOT-DOING §12: без автоповышения) | Phase 1 | 📋 Planned (решение 2026-10-17) |
 | P0-29 | **Адаптатор** (Adapter/Profiler) — самообучающийся профилер стиля документа. v0.2 на СП-252: regex слаб на «X и менее»/«от X и более» (ложные 3/3 high); 14B выдаёт condition в statement, не в quote → правило парсера. Будет учитывать decisions.json Expert Console | Phase 1 | 🔥 Active (SP-252 v0.2, 2026-10-17) |
 | P0-30 | **Артефакт-Археолог** — добыча вырезанных значений из предыдущих редакций: `value_inherited_from {doc, edition, clause}` + confidence `current/inherited/lost`; «lost» — явный статус в operator_review (G-3). Источники: реестр amendments + граф документов | Phase 2 | 📋 Planned (идея автора 2026-10-17: «нормы археолога» — при актуализации СП вырезают таблицы/значения, трудно понять откуда брать) |
+| P0-31 | **Эксперт-валидатор** + recipe schema + связочность IFC-отношений для v0.2 | Phase 1 | 📋 Planned (вклад автора 2026-10-17: recipe draft в recipes/thermal_resistance_wall_v0.1.yaml со статусами v0.2, 4 test-кейсами, ifc_binding. Следующие шаги: 1) recipe-файл до кода, 2) Обогащатель ↔ Recipe (только confirmed-входы, INPUT_REQUIRED при нехватке), 3) заменить эвристику «стена по типу» на IfcRelContainedInSpatialStructure, 4) зафиксировать immutable-снапшот как основу аудита) |
 
 ### 1.3. Зафиксированные решения (пилот)
 
