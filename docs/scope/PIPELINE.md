@@ -6,15 +6,17 @@
 
 | Слой | Что | Где |
 |---|---|---|
-| **Извлечение** | OCR (Tesseract) + pdfplumber для текстовых PDF, координаты + страница | `tools/normpipe/` |
+| **Извлечение текста** | **Текстовый слой первым** (`pdfplumber`); fallback — Tesseract для сканов; Camelot точечно для линованных таблиц | `tools/normpipe/` |
 | **Лингвист** | Локальный Ollama (3B/7B) — публичные нормы; облако — публичные нормы только (F-06) | `tools/normpipe/normpipe.py linguist` |
 | **Распознаватель** | Детерминированный код → norm-criterion.json; jsonschema-валидация | `tools/normpipe/normpipe.py recognize` |
 | **Генераторы** | IDS-файл + bSDD import model + Cypher-семя (Phase 2 — Neo4j) | `tools/normpipe/normpipe.py gen-*` |
 | **Верификация** | Мета-валидация G-2 (схема, дубли, конфликты); coverage statement (G-3) | policy pack manifest |
 | **Approval** | human:… в provenance.approved_by (G-5) | UI Expert Console (Phase 2) |
-| **Граф** | NetworkX в Python сейчас (γ); Cypher-seed для Neo4j (Phase 2) | `braim_core/graph/`, `normpipe gen-cypher` |
+| **Граф** | **NetworkX в Python** сейчас (γ-вариант α); Cypher-seed для Neo4j (Phase 2); in-memory проекция в расчётном сервисе если понадобится | `braim_core/graph/`, `normpipe gen-cypher` |
 | **Словарный водопад** | bSDD → RusSet → КСИ → создаём в BRAIM Pset (CL-05) | `gen-bsdd` |
-| **Актуальность** | Агент-мониторинг (P0-20) — check edition vs сайт Минстроя | Phase 2 |
+| **Актуальность** | **Агент только предлагает** статус `superseded_candidate` (P0-20), не применяет — подтверждение ручное/полуавтоматическое | Phase 2 |
+| **Хранение нормативов** | `_library/normative/INBOX/` (черновик) → `_library/normative/VERIFIED/SP-NNN_YYYY_ru/{source.pdf, metadata.yaml, extraction/manifest.json, tables/, rules/}`; в git — только `metadata.yaml`, `manifest.json`, извлечения; PDF — вне git | `_library/normative/` |
+| **Зеркало входов** | `_library/normative/INBOX_INDEX.md`: дата, URL, filename, sha256, кто добавил, статус | `_library/normative/INBOX_INDEX.md` |
 | **Эталон АГР** | IDS Москвы (цифровой) + IfcTester-прогон + 3×IfcRailing FAIL-кейс | уже работает |
 | **Дорожная карта** | Concept v1.1, Lifecycle/Layer/Classification, ADR-009/013/015/016, документы v0.1 | git |
 
