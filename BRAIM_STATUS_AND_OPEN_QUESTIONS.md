@@ -46,6 +46,7 @@
 | P0-21 | **`docs/scope/PIPELINE.md` + `NOT-DOING.md`** — что делаем/не делаем/почему/триггер пересмотра; формат: решение, причина, триггер, дата (17 пунктов) | Phase 1 | ✅ Done (2026-10-17) |
 | P0-22 | **`docs/graph/SCHEMA_v0_1.md`** — модель графа γ (NetworkX → Cypher-seed для Neo4j): Document/Table/Rule/Criterion/Property; «ячейка ≠ узел» | Phase 1 | ✅ Done (2026-10-17) |
 | P0-23 | **Табличный модуль в normpipe** — текстовый слой первым (pdfplumber); fallback Tesseract для сканов; Camelot — точечно; LLM — только для семантики (NOT-DOING §14) | Phase 1 | 📋 Planned (решение 2026-10-17; в INBOX — 17 СП) |
+| P0-24 | **Ingest Lifecycle v0.1** — 9 стадий «не знаю → понимаю → размещаю» (0..8); `docs/ingest/INGEST_LIFECYCLE.md`. План: `normpipe detect/classify/link/meta-validate/activate` (Phase 1) + UI Expert Console (Phase 2) | Phase 1 | ✅ Спека (2026-10-17); реализация — со СП 545 |
 
 ### 1.3. Зафиксированные решения (пилот)
 
