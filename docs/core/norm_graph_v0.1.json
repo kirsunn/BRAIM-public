@@ -1,0 +1,134 @@
+{
+ "dep_rules": [
+  {
+   "rule_id": "DEP-001",
+   "name": "Замкнутость помещения стенами",
+   "source": "СП 48.13330.2019, п. 5.2",
+   "parent": "IfcSpace",
+   "child": "IfcWall",
+   "relation": "enclosed_by",
+   "min_count": 3,
+   "validation": "geometry.is_closed == true",
+   "cascade_impact": [
+    "enriched.set_status:INVALID",
+    "enriched.set_volume:0",
+    "enriched.set_cost:0",
+    "message:Помещение не имеет замкнутого контура стен. Расчёт объёмов и стоимости невозможен."
+   ],
+   "severity": "CRITICAL"
+  }
+ ],
+ "documents": [
+  {
+   "id": "SP252",
+   "title": "СП 252.1325800.2016",
+   "authority": "Минстрой России",
+   "scope": [
+    "DOO",
+    "MGN",
+    "fire_safety"
+   ],
+   "references": [
+    "SP42",
+    "SP118",
+    "GOST30494"
+   ]
+  },
+  {
+   "id": "SP42",
+   "title": "СП 42.13330.2016",
+   "authority": "Минстрой России",
+   "scope": [
+    "site_planning",
+    "distances"
+   ],
+   "references": []
+  },
+  {
+   "id": "GOST30494",
+   "title": "ГОСТ 30494-2011",
+   "authority": "Росстандарт",
+   "scope": [
+    "indoor_climate"
+   ],
+   "references": []
+  },
+  {
+   "id": "SP118",
+   "title": "СП 118.13330",
+   "authority": "Минстрой России",
+   "scope": [
+    "public_buildings"
+   ],
+   "references": []
+  },
+  {
+   "id": "SP59",
+   "title": "СП 59.13330",
+   "authority": "Минстрой России",
+   "scope": [
+    "MGN"
+   ],
+   "references": []
+  },
+  {
+   "id": "SP1",
+   "title": "СП 1.13130",
+   "authority": "МЧС России",
+   "scope": [
+    "evacuation"
+   ],
+   "references": []
+  },
+  {
+   "id": "SP54",
+   "title": "СП 54.13330.2022",
+   "authority": "Минстрой России",
+   "scope": [
+    "residential"
+   ],
+   "references": []
+  },
+  {
+   "id": "FZ123",
+   "title": "123-ФЗ",
+   "authority": "РФ",
+   "scope": [
+    "fire_safety"
+   ],
+   "references": []
+  }
+ ],
+ "edges": [
+  {
+   "from": "SP252",
+   "to": "SP42",
+   "reason": "distances_to_red_lines"
+  },
+  {
+   "from": "SP252",
+   "to": "GOST30494",
+   "reason": "indoor_climate"
+  },
+  {
+   "from": "SP252",
+   "to": "SP118",
+   "reason": "public_building_requirements"
+  },
+  {
+   "from": "SP252",
+   "to": "SP59",
+   "reason": "MGN_accessibility"
+  },
+  {
+   "from": "SP252",
+   "to": "SP1",
+   "reason": "evacuation_widths"
+  },
+  {
+   "from": "SP252",
+   "to": "FZ123",
+   "reason": "fire_safety"
+  }
+ ]
+}
