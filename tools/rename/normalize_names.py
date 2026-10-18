@@ -76,6 +76,9 @@ def main():
                 continue
             if p.name in seen: continue
             new_name, reason=normalize(p.name, today)
+            doc_type, _=detect(p.name)
+            if not doc_type and reason == "unrecognized_pdf":
+                doc_type = "PDF"
             status="skipped" if new_name is None else ("dry_run" if args.dry_run else "renamed")
             target=p.with_name(new_name) if new_name else None
             if target and target.exists() and target!=p:
@@ -83,7 +86,14 @@ def main():
                 new_name=""
             elif target and not args.dry_run and status=="renamed":
                 p.rename(target)
-            writer.writerow({"old_name":str(p.relative_to(source)), "new_name":new_name, "doc_type":reason if reason=="unrecognized_pdf" else (new_name.split("-")[0] if new_name else ""), "source_folder":str(source), "status":status, "reason":reason})
+            writer.writerow({
+                "old_name": str(p.relative_to(source)),
+                "new_name": new_name or "",
+                "doc_type": doc_type or "",
+                "source_folder": str(source),
+                "status": status,
+                "reason": reason,
+            })
     print(f"Completed. Map: {map_path}; dry-run={args.dry_run}")
 
 if __name__=="__main__":
