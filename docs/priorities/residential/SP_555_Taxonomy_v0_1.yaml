@@ -1,0 +1,126 @@
+# Таксономия СП 555.1325800.2025 — наша интерпретация (когда откроем PDF — сверим)
+# v0.1 — экспертная гипотеза, требует верификации по СП 555 (скоро скачаем)
+
+sp555_taxonomy:
+  meta:
+    note: "Это — реконструкция по общеизвестной классификации СП."
+    source: "общепринятая структура + проверка смотри СП 555 pdf"
+    status: "reconstruction"
+    next_action: "открыть СП 555.pdf и заменить на таблицу 1 дословно"
+
+  complexes:
+    - code: "А"  # пожарная безопасность
+      name: "Пожарная безопасность"
+      our_downloaded: [1, 2, 4]  # эвакуация, огнест., расст.
+      priority_for_mkd: P0
+
+    - code: "Б"  # конструкции
+      name: "Конструкции и материалы"
+      subcomplexes:
+        - code: "Б.1"
+          name: "Нагрузки"
+          our_downloaded: [20]
+          priority_for_mkd: P1
+        - code: "Б.2"
+          name: "Бетон и железобетон"
+          our_downloaded: []
+          priority_for_mkd: P1
+        - code: "Б.3"
+          name: "Сталь"
+          our_downloaded: []
+          priority_for_mkd: P2
+        - code: "Б.4"
+          name: "Каменные и армокаменные"
+          our_downloaded: [15]
+          priority_for_mkd: P2
+        - code: "Б.5"
+          name: "Деревянные"
+          our_downloaded: []
+        - code: "Б.6"
+          name: "Основания и фундаменты"
+          our_downloaded: [22, 24, 25, 26]
+          priority_for_mkd: P1
+        - code: "Б.7"
+          name: "Защита от коррозии"
+          our_downloaded: [28]
+        - code: "Б.8"
+          name: "Полы"
+          our_downloaded: [29]
+        - code: "Б.9"
+          name: "Кровли"
+          our_downloaded: [17]
+        - code: "Б.10"
+          name: "Обследование конструкций"
+          our_downloaded: [13]
+
+    - code: "В"  # инженерия
+      name: "Инженерные системы"
+      subcomplexes:
+        - code: "В.1"
+          name: "Отопление, вентиляция, кондиционирование"
+          our_downloaded: []
+          priority_for_mkd: P0  # нет, нужна загрузка
+        - code: "В.2"
+          name: "Водоснабжение и канализация (внутренние)"
+          our_downloaded: [30]
+          priority_for_mkd: P0
+        - code: "В.3"
+          name: "Водоснабжение и канализация (наружные)"
+          our_downloaded: [31, 32]
+        - code: "В.4"
+          name: "Теплозащита"
+          our_downloaded: [23]  # это 23.101
+          priority_for_mkd: P0  # нужно СП 50.13330
+        - code: "В.5"
+          name: "Звукоизоляция"
+          our_downloaded: [23]
+        - code: "В.6"
+          name: "Электроснабжение"
+          our_downloaded: []  # нужно СП 256
+        - code: "В.7"
+          name: "Газоснабжение"
+          our_downloaded: []  # нужно СП 62
+        - code: "В.8"
+          name: "Слаботочные системы"
+          our_downloaded: [7]  # это пожарка; нужны 484, 486
+
+    - code: "Г"  # градостроительство
+      name: "Градостроительство и жилые здания"
+      subcomplexes:
+        - code: "Г.1"
+          name: "Планировка и застройка"
+          our_downloaded: []
+        - code: "Г.2"
+          name: "Жилые здания"
+          our_downloaded: [54]  # DOCX
+          priority_for_mkd: P0
+        - code: "Г.3"
+          name: "Общественные здания"
+          our_downloaded: []  # нужно СП 118
+        - code: "Г.4"
+          name: "Планировка и застройка МКД (до 75м)"
+          our_downloaded: [54]
+        - code: "Г.5"
+          name: "Доступность МГН"
+          our_downloaded: []  # нужно СП 59
+        - code: "Г.6"
+          name: "Благоустройство"
+          our_downloaded: []
+        - code: "Г.7"
+          name: "Автодороги"
+          our_downloaded: [34]
+
+# Что скачать для полного покрытия MKD
+  mvd_gaps_for_mkd:
+    - "СП 50.13330.2024 (теплозащита)"
+    - "СП 59.13330 (МГН)"
+    - "СП 60.13330 (ОВК)"
+    - "СП 63.13330 (железобетон)"
+    - "СП 555.1325800.2025 (мета-норматив — КОРЕНЬ графа)"
+    - "СП 118.13330 (общественные в МКД)"
+
+# Связь с BRAIM Knowledge Core
+  braim_integration:
+    layer: "Knowledge Core v0.3 — будем после batch-OCR"
+    schema: "нормативы в core" + "комплексы в taxonomy"
+    cross_ref: "каждый SP-XXX.YYY в Knowledge Core имеет complex_code из этой таблицы"
