@@ -13,6 +13,8 @@
 | **BRAIM** | Governance platform | Оркестрация проектной информации: artifact registry, provenance, Quality Gate, snapshots, CDE-интеграция |
 | **BRAVIM** | Building Avatar platform | Платформа, в которой здание существует как живой верифицируемый аватар |
 | **BAV** | Building Avatar | Сама модель/сущность здания: идентичность, свойства, отношения, доказательства, правила, жизненный цикл |
+| **BAR** | Building Avatar Registry | Реестр аватаров: их версий, доказательств, правил и статусов |
+| **VAR** | Versioned Avatar Representation | Версионированное представление аватара для хранения, обмена и воспроизводимости |
 | **IFCA** | Exchange format | Транспортный формат BAV: как аватар представляется и переносится между системами |
 | **BRAVO** | Product suite | Зонтичное название объединённой системы: BRAIM + BRAVIM/BAV + IFCA |
 
