@@ -4,6 +4,33 @@
 
 > Этот репозиторий — публичное зеркало спецификаций, схем и политик BRAIM. Production IFC-артефакты хранятся в CDE заказчика и/или object storage; Git используется только для кода, схем, policy packs, mappings, ADR, snapshot manifests и Golden Corpus.
 
+## Naming & Product Layers
+
+Проект развивается как многослойная система. Названия ниже описывают разные уровни одного продукта, а не конкурирующие версии.
+
+| Название | Уровень | Что это |
+|---|---|---|
+| **BRAIM** | Governance platform | Оркестрация проектной информации: artifact registry, provenance, Quality Gate, snapshots, CDE-интеграция |
+| **BRAVIM** | Building Avatar platform | Платформа, в которой здание существует как живой верифицируемый аватар |
+| **BAV** | Building Avatar | Сама модель/сущность здания: идентичность, свойства, отношения, доказательства, правила, жизненный цикл |
+| **IFCA** | Exchange format | Транспортный формат BAV: как аватар представляется и переносится между системами |
+| **BRAVO** | Product suite | Зонтичное название объединённой системы: BRAIM + BRAVIM/BAV + IFCA |
+
+```text
+BRAVO = BRAIM (governance) + BRAVIM/BAV (building avatar) + IFCA (transport)
+```
+
+Коротко:
+
+```text
+BRAIM управляет информацией.
+BRAVIM оживляет здание.
+IFCA переносит его между мирами.
+BRAVO — это вся система.
+```
+
+BRAIM не устаревает: он остаётся governance-слоем. BRAVIM/BAV добавляет над ним слой «живого» здания, а IFCA определяет, как этот слой представляется и обменивается.
+
 ## Назначение репозитория
 
 - Публикация версионированных спецификаций BRAIM (schemas, policy packs, mappings, ADR).
