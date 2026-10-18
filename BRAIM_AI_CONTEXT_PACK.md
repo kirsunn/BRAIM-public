@@ -1,3 +1,7 @@
+# BRAVO v0.4 Architecture Update
+
+> **Architecture update v0.4:** BRAIM is hosted inside BRAVIUM-Planet. The BRAV container is `IFCA + BAR + BAV + RAG + BAG`. BAV is validated against RAG; BAG records activity and decisions. See [`BRAVO_ARCHITECTURE_V0_4.md`](./BRAVO_ARCHITECTURE_V0_4.md).
+
 # BRAIM AI Context Pack
 
 ## Версия
@@ -21,11 +25,13 @@ Do not treat the repository as a completed product. Treat it as a structured set
 | **BAV** | Building Avatar: the building as a verifiable entity |
 | **BAR** | Building Avatar Registry: registry of avatars, versions, evidence and rules |
 | **VAR** | Versioned Avatar Representation: versioned representation for storage, exchange and reproducibility |
+| **RAG** | Requirements & Constraints Graph: project-specific graph of applicable requirements and constraints |
+| **BAG** | Building Activity Log: chronological history of actions, checks and decisions |
 | **IFCA** | Exchange format for BAV |
 | **BRAVO** | Umbrella product suite: BRAIM + BRAVIM/BAV + IFCA |
 
 ```text
-BRAVO = BRAIM (governance) + BRAVIM/BAV (building avatar) + IFCA (transport)
+BRAV = IFCA + BAR + BAV + RAG + BAG
 ```
 
 A rule is not merely a quotation from a regulation. It is a verifiable statement linked to an official source and executable over BAV.

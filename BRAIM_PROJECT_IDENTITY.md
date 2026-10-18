@@ -1,3 +1,7 @@
+# BRAVO v0.4 Architecture Update
+
+> **Architecture update v0.4:** BRAIM is hosted inside BRAVIUM-Planet. The BRAV container is `IFCA + BAR + BAV + RAG + BAG`. BAV is validated against RAG; BAG records activity and decisions. See [`BRAVO_ARCHITECTURE_V0_4.md`](./BRAVO_ARCHITECTURE_V0_4.md).
+
 # BRAIM Project Identity
 
 ## Статус
@@ -40,6 +44,8 @@ BRAIM является governance-слоем более широкой прод�
 | **BAV** | Building Avatar | Сама модель/сущность здания: идентичность, свойства, отношения, доказательства, правила, жизненный цикл |
 | **BAR** | Building Avatar Registry | Реестр аватаров, их версий, доказательств, правил и статусов |
 | **VAR** | Versioned Avatar Representation | Версионированное представление аватара для хранения, обмена и воспроизводимости |
+| **RAG** | Requirements & Constraints Graph | Граф требований, ограничений и нормативных критериев проекта |
+| **BAG** | Building Activity Log | Журнал активности: изменения, проверки, решения |
 | **IFCA** | Exchange format | Транспортный формат BAV: как аватар представляется и переносится между системами |
 | **BRAVO** | Product suite | Зонтичное название объединённой системы |
 
@@ -57,6 +63,8 @@ product_family:
   avatar: BAV
   avatar_registry: BAR
   avatar_representation: VAR
+  requirements_graph: RAG
+  activity_log: BAG
   exchange_format: IFCA
 ```
 

@@ -1,3 +1,7 @@
+# BRAVO v0.4 Architecture Update
+
+> **Architecture update v0.4:** BRAIM is hosted inside BRAVIUM-Planet. The BRAV container is `IFCA + BAR + BAV + RAG + BAG`. BAV is validated against RAG; BAG records activity and decisions. See [`BRAVO_ARCHITECTURE_V0_4.md`](./BRAVO_ARCHITECTURE_V0_4.md).
+
 # BRAVO — Critique Response and v0.2 Plan
 
 Version: 0.2

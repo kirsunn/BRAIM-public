@@ -1,3 +1,7 @@
+# BRAVO v0.4 Architecture Update
+
+> **Architecture update v0.4:** BRAIM is hosted inside BRAVIUM-Planet. The BRAV container is `IFCA + BAR + BAV + RAG + BAG`. BAV is validated against RAG; BAG records activity and decisions. See [`BRAVO_ARCHITECTURE_V0_4.md`](./BRAVO_ARCHITECTURE_V0_4.md).
+
 # BRAVIM / BRAVO — Project Context for External Review
 
 Version: 0.1.0
@@ -7,7 +11,7 @@ Purpose: give an external reviewer a complete, code-free understanding of the pr
 
 ## 1. One-paragraph summary
 
-**BRAVO** is a proposed openBIM-oriented platform in which a building exists as a **Building Avatar (BAV)**: a versioned, verifiable digital entity that can answer questions about itself, be checked against applicable requirements, preserve evidence, propose changes, and keep a human in control of decisions. BRAIM provides the governance layer; BRAVIM/BAV provides the building-avatar layer; IFCA provides an exchange format; BAR and VAR provide registry and versioned representation concepts.
+**BRAVO** is a proposed openBIM-oriented platform in which a building exists as a **Building Avatar (BAV)**: a versioned, verifiable digital entity that can answer questions about itself, be checked against applicable requirements, preserve evidence, propose changes, and keep a human in control of decisions. BRAIM provides the governance and knowledge layer inside BRAVIUM-Planet; BRAVIM provides the local building-avatar client; IFCA provides an exchange format; BAR, VAR, RAG and BAG provide registry, representation, requirements and activity-history concepts.
 
 ## 2. Problem
 
@@ -26,20 +30,18 @@ BRAVO aims to address these problems by combining governance, a verifiable build
 
 | Name | Layer | Purpose |
 |---|---|---|
-| **BRAIM** | Governance platform | Project information governance: artifact registry, provenance, Quality Gate, snapshots, CDE integration |
-| **BRAVIM** | Building Avatar platform | Platform where a building exists as a living, verifiable avatar |
+| **BRAIM** | Governance and knowledge platform | Project information governance, norms, criteria, integrations; hosted inside Planet |
+| **BRAVIM** | Building Avatar platform | Local client where a building exists as a living, verifiable avatar |
 | **BAV** | Building Avatar | The building as a versioned, identifiable, checkable entity |
 | **BAR** | Building Avatar Registry | Registry of avatars, versions, evidence, rules and statuses |
 | **VAR** | Versioned Avatar Representation | Versioned representation of an avatar for storage, exchange and reproducibility |
+| **RAG** | Requirements & Constraints Graph | Project-specific graph of applicable requirements and constraints |
+| **BAG** | Building Activity Log | Chronological history of actions, checks and decisions |
 | **IFCA** | Exchange format | Transport/exchange format for BAV |
 | **BRAVO** | Product suite | Umbrella name for the combined system |
 
 ```text
-BRAVO = BRAIM (governance)
-      + BRAVIM/BAV (building avatar)
-      + BAR (registry)
-      + VAR (versioned representation)
-      + IFCA (exchange)
+BRAV = IFCA + BAR + BAV + RAG + BAG
 ```
 
 ## 4. Core idea
@@ -68,20 +70,24 @@ and executable over BAV.
 ## 5. Architecture
 
 ```text
-BRAVIM Planet
-   | publishes
-Ruleset Package
-   | downloads and pins
-BAV Local Core / Rules Cache
-   | applies
-BAV Validator
-   |
-Findings / Diagnostics / Treatment Packages
-   |
-Human decision
+BRAVIUM-Planet (cloud)
+├── BRAIM — criteria, norms, integrations
+├── Project Registry
+├── Ruleset Packages
+└── Evidence / Knowledge Base
+
+        ↕ API
+
+BRAVIM (local client)
+└── BRAV container
+    ├── IFCA — exchange
+    ├── BAR — version registry
+    ├── BAV — building avatar
+    ├── RAG — requirements and constraints graph
+    └── BAG — activity log
 ```
 
-### BRAVIM Planet
+### BRAVIUM-Planet
 
 Planet is the knowledge-publishing side. It:
 
@@ -91,7 +97,7 @@ Planet is the knowledge-publishing side. It:
 - proposes updates;
 - does not silently change knowledge used by projects.
 
-### BAV Local Core
+### BRAVIM Local Core
 
 Local Core is the project-side execution environment. It:
 
@@ -324,7 +330,7 @@ BRAVO does not aim to:
 
 We specifically welcome critique on:
 
-- Is the separation BRAIM / BRAVIM / BAV / BAR / VAR / IFCA / BRAVO clear or over-engineered?
+- Is the separation BRAIM / BRAVIM / BAV / BAR / VAR / RAG / BAG / IFCA / BRAVO clear or over-engineered?
 - Is "Building Avatar" a useful concept, or is it a renaming of a digital twin?
 - Is the Ruleset Package model sufficiently precise for real normative knowledge?
 - Is the evidence model strong enough for professional and regulatory use?
@@ -338,13 +344,12 @@ We specifically welcome critique on:
 ## 16. Main formula
 
 ```text
-Planet verifies and publishes knowledge.
-Ruleset Package packages knowledge.
-BAR registers avatars and versions.
-VAR preserves representations.
-IFCA transports them.
-Local Core pins and applies knowledge.
-BAV is checked against that knowledge.
-A human makes the decision.
+Planet hosts the project and BRAIM.
+BRAIM provides criteria, norms and integrations.
+BRAVIM works locally with the project.
+BRAV contains IFCA, BAR, BAV, RAG and BAG.
+BAV is checked against RAG.
+BAG remembers everything.
+A human decides.
 BRAVO is the whole system.
 ```

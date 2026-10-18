@@ -1,8 +1,12 @@
+# BRAVO v0.4 Architecture Update
+
+> **Architecture update v0.4:** BRAIM is hosted inside BRAVIUM-Planet. The BRAV container is `IFCA + BAR + BAV + RAG + BAG`. BAV is validated against RAG; BAG records activity and decisions. This document remains as the v0.3 predecessor; the current baseline is [`BRAVO_ARCHITECTURE_V0_4.md`](./BRAVO_ARCHITECTURE_V0_4.md).
+
 # BRAVO Architecture v0.3 — Client-Server Model with BAG
 
 Version: 0.3
 Date: 2026-10-18
-Status: Architecture proposal
+Status: Superseded by v0.4
 Purpose: define the BRAVO client-server architecture, the BRAV container and the Building Activity Log (BAG)
 
 ## 1. Summary
