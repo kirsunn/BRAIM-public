@@ -4,6 +4,40 @@
 
 > Этот репозиторий — публичное зеркало спецификаций, схем и политик BRAIM. Production IFC-артефакты хранятся в CDE заказчика и/или object storage; Git используется только для кода, схем, policy packs, mappings, ADR, snapshot manifests и Golden Corpus.
 
+## Architecture v0.4
+
+BRAIM hosted inside **BRAVIUM-Planet**. BRAVIM is the local client working with a project through the **BRAV container**.
+
+```text
+BRAVIUM-Planet (cloud)
+├── BRAIM — criteria, norms, integrations
+├── Project Registry
+├── Ruleset Packages
+└── Evidence / Knowledge Base
+
+        ↕ API
+
+BRAVIM (local client)
+└── BRAV container
+    ├── IFCA — exchange
+    ├── BAR — version registry
+    ├── BAV — building avatar
+    ├── RAG — requirements and constraints graph
+    └── BAG — activity log
+```
+
+```text
+BRAV = IFCA + BAR + BAV + RAG + BAG
+```
+
+- **BRAIM** lives inside Planet and provides criteria, norms and integrations.
+- **BRAVIM** works locally with the project.
+- **BAV** is checked against **RAG**.
+- **BAG** records every important action and decision.
+- A human approves changes.
+
+See [`BRAVO_ARCHITECTURE_V0_4.md`](./BRAVO_ARCHITECTURE_V0_4.md) and [`BRAVO_ARCHITECTURE_V0_4_UPDATE.md`](./BRAVO_ARCHITECTURE_V0_4_UPDATE.md).
+
 ## Naming & Product Layers
 
 Проект развивается как многослойная система. Названия ниже описывают разные уровни одного продукта, а не конкурирующие версии.
@@ -15,6 +49,8 @@
 | **BAV** | Building Avatar | Сама модель/сущность здания: идентичность, свойства, отношения, доказательства, правила, жизненный цикл |
 | **BAR** | Building Avatar Registry | Реестр аватаров: их версий, доказательств, правил и статусов |
 | **VAR** | Versioned Avatar Representation | Версионированное представление аватара для хранения, обмена и воспроизводимости |
+| **RAG** | Requirements & Constraints Graph | Граф требований, ограничений и нормативных критериев проекта |
+| **BAG** | Building Activity Log | Журнал активности: изменения, проверки, решения |
 | **IFCA** | Exchange format | Транспортный формат BAV: как аватар представляется и переносится между системами |
 | **BRAVO** | Product suite | Зонтичное название объединённой системы: BRAIM + BRAVIM/BAV + IFCA |
 
@@ -48,6 +84,9 @@ BRAIM не устаревает: он остаётся governance-слоем. BR
 | [`BRAIM_Handover_Package_v1.0_2026-09-30.md`](./BRAIM_Handover_Package_v1.0_2026-09-30.md) | Основной пакет передачи (handover) для пилота. |
 | [`BRAIM_Master_Context_1.0_2026-09-30.md`](./BRAIM_Master_Context_1.0_2026-09-30.md) | Единый рабочий архитектурный baseline (локальный master). |
 | [`BRAIM_STATUS_AND_OPEN_QUESTIONS.md`](./BRAIM_STATUS_AND_OPEN_QUESTIONS.md) | Текущий статус и открытые вопросы. |
+| [`BRAVO_ARCHITECTURE_V0_4.md`](./BRAVO_ARCHITECTURE_V0_4.md) | Текущая архитектура BRAVO v0.4. |
+| [`BRAVO_PRODUCT_OVERVIEW.md`](./BRAVO_PRODUCT_OVERVIEW.md) | Простое описание BRAVO для неспециалистов. |
+| [`BRAIM_BRAVIM_PROJECT_CONTEXT_FOR_REVIEW.md`](./BRAIM_BRAVIM_PROJECT_CONTEXT_FOR_REVIEW.md) | Контекст проекта для внешней критики. |
 
 ## Что такое BRAIM
 
@@ -167,6 +206,7 @@ Control plane: snapshot registry, policy engine, quality gate, decisions, audit.
 - **Версия спецификации:** 0.1.0 (draft).
 - **Пилот:** Республика Татарстан, Россия.
 - **BAV/IFCA:** research prototype в ветке `ifca-prototype`.
+- **Архитектура:** BRAVO v0.4.
 - **Следующие действия:** Phase 0 — architecture freeze, schemas, BRAIM-LIMS 0.1, Golden Corpus, CDE capability discovery.
 
 ## Лицензия и контакты
