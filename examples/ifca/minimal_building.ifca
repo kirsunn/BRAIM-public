@@ -1,0 +1,54 @@
+{
+  "ifca": {
+    "format": "IFCA",
+    "version": "0.1.0",
+    "bav_id": "BAV-000001",
+    "snapshot": "SNAP-000001",
+    "created_at": "2026-10-18T07:11:00+03:00",
+    "core": {
+      "project": {
+        "id": "PRJ-001",
+        "name": "Minimal Building Avatar",
+        "description": "First experimental IFCA example: site, building, storey, space and wall."
+      },
+      "spatial": {
+        "site": "SITE-001",
+        "building": "BLDG-001",
+        "storeys": ["STOREY-01"],
+        "spaces": ["SPACE-101"]
+      },
+      "entities": [
+        {
+          "id": "WALL-001",
+          "type": "wall",
+          "name": "Exterior wall",
+          "typeRef": "WALL-TYPE-001",
+          "geometryRef": "GEOM-WALL-001",
+          "properties": {
+            "thickness": 200,
+            "fire_rating": "REI 45"
+          },
+          "relationships": {
+            "in_storey": "STOREY-01",
+            "bounds_space": ["SPACE-101"]
+          },
+          "extensions": {
+            "fire": "FIRE-SET-001",
+            "provenance": "IMP-000001"
+          }
+        }
+      ]
+    },
+    "modules": {
+      "geometry": "GEOM-SNAP-000001",
+      "normative": "RULESET-2026.10.1",
+      "provenance": "PROV-SNAP-000001",
+      "lifecycle": "LC-DESIGN"
+    },
+    "references": {
+      "ifc43": "minimal_building.ifc",
+      "ifcx": "minimal_building.ifcx",
+      "documents": ["minimal_building_brief.pdf"]
+    }
+  }
+}
