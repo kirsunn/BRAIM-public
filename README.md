@@ -31,6 +31,61 @@ BRAIM — это не авторский инструмент и не замен
 - создаёт immutable iteration snapshots;
 - обеспечивает provenance между артефактом, правилом, валидацией, BCF issue и выпуском.
 
+## BRAVIM / Building Avatar (BAV)
+
+**BRAVIM** развивает BRAIM в сторону **Building Avatar (BAV)** — верифицируемой, машиночитаемой модели здания, которая может отвечать на вопросы о себе и проверяться на соответствие требованиям.
+
+BAV — это не копия IFC и не «умная BIM-модель». Это информационная модель здания с:
+
+- идентифицируемыми сущностями (`BAV-*`);
+- семантическими классификациями;
+- геометрией и пространственными отношениями;
+- свойствами и жизненным циклом;
+- доказательной базой (`Evidence Fragment`);
+- правилами (`Ruleset Package`);
+- проверками и результатами;
+- предложениями изменений (`Treatment Package`).
+
+## IFCA-прототип
+
+**IFCA** (IFC + Avatar) — экспериментальный транспортный формат BAV. Он описывает здание как набор модулей, а не как единый монолитный файл.
+
+```text
+.ifca
+├── identity
+├── modules
+├── entities
+├── relations
+├── properties
+├── evidence
+├── rulesets
+└── audit
+```
+
+Прототип размещён в ветке [`ifca-prototype`](https://github.com/kirsunn/BRAIM-public/tree/ifca-prototype):
+
+- [`docs/research/ifc5/`](https://github.com/kirsunn/BRAIM-public/tree/ifca-prototype/docs/research/ifc5) — исследования IFC5, маппинг IFC5 → BAV, решения по IFCA;
+- [`specs/ifca/bav_extensions_schema_v0_1.json`](https://github.com/kirsunn/BRAIM-public/blob/ifca-prototype/specs/ifca/bav_extensions_schema_v0_1.json) — JSON Schema для Evidence Fragment, Ruleset Package и Treatment Package;
+- [`docs/research/ifc5/08_ruleset_package_specification.md`](https://github.com/kirsunn/BRAIM-public/blob/ifca-prototype/docs/research/ifc5/08_ruleset_package_specification.md) — спецификация Ruleset Package и структуры правил.
+
+## Ruleset Package
+
+**Ruleset Package** — версионированный, проверяемый набор нормативных и аналитических критериев, публикуемый BRAVIM Planet и используемый BAV Local Core.
+
+```text
+BRAVIM Planet
+   ↓ публикует
+Ruleset Package
+   ↓ скачивает и pin-ит
+BAV Local Core / Rules Cache
+   ↓ применяет
+BAV Validator
+   ↓
+Findings / Diagnostic / Treatment
+```
+
+Ключевой принцип: правило — не просто цитата из нормативного документа, а проверяемое утверждение, связанное с официальным источником и исполнимое над BAV.
+
 ## Зафиксированные решения (пилот)
 
 | ID | Решение | Статус |
@@ -44,7 +99,7 @@ BRAIM — это не авторский инструмент и не замен
 
 ## Архитектура (кратко)
 
-```
+```text
 Customer CDE (master)
     ↓
 BRAIM Artifact Registry (hash, immutable mirror/reference)
@@ -82,6 +137,7 @@ Control plane: snapshot registry, policy engine, quality gate, decisions, audit.
 
 - **Версия спецификации:** 0.1.0 (draft).
 - **Пилот:** Республика Татарстан, Россия.
+- **BAV/IFCA:** research prototype в ветке `ifca-prototype`.
 - **Следующие действия:** Phase 0 — architecture freeze, schemas, BRAIM-LIMS 0.1, Golden Corpus, CDE capability discovery.
 
 ## Лицензия и контакты
@@ -91,4 +147,4 @@ Control plane: snapshot registry, policy engine, quality gate, decisions, audit.
 
 ---
 
-*Последнее обновление: 2026-10-04*
+*Последнее обновление: 2026-10-18*
