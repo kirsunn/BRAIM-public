@@ -1,0 +1,190 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/kirsunn/BRAIM-public/ifca-prototype/specs/ifca/ifca_schema_v0_1.json",
+  "title": "IFCA v0.1 — Building Avatar Research Prototype",
+  "description": "Experimental JSON schema for an IFCA (IFC Avatar) container representing a Building Avatar (BAV).",
+  "type": "object",
+  "required": ["ifca"],
+  "properties": {
+    "ifca": {
+      "type": "object",
+      "required": ["format", "version", "bav_id", "core"],
+      "properties": {
+        "format": {
+          "type": "string",
+          "const": "IFCA"
+        },
+        "version": {
+          "type": "string",
+          "const": "0.1.0"
+        },
+        "bav_id": {
+          "type": "string",
+          "pattern": "^BAV-[0-9]{6,}$"
+        },
+        "snapshot": {
+          "type": "string",
+          "pattern": "^SNAP-[0-9]{6,}$"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "core": {
+          "$ref": "#/definitions/bavCore"
+        },
+        "modules": {
+          "$ref": "#/definitions/moduleRefs"
+        },
+        "references": {
+          "$ref": "#/definitions/references"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "definitions": {
+    "bavCore": {
+      "type": "object",
+      "required": ["project", "spatial", "entities"],
+      "properties": {
+        "project": {
+          "$ref": "#/definitions/project"
+        },
+        "spatial": {
+          "$ref": "#/definitions/spatialStructure"
+        },
+        "entities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/bavEntity"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "project": {
+      "type": "object",
+      "required": ["id", "name"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^PRJ-[0-9]{3,}$"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "spatialStructure": {
+      "type": "object",
+      "required": ["site", "building", "storeys", "spaces"],
+      "properties": {
+        "site": {
+          "type": "string",
+          "pattern": "^SITE-[0-9]{3,}$"
+        },
+        "building": {
+          "type": "string",
+          "pattern": "^BLDG-[0-9]{3,}$"
+        },
+        "storeys": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^STOREY-[0-9]{2,}$"
+          }
+        },
+        "spaces": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^SPACE-[0-9]{3,}$"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "bavEntity": {
+      "type": "object",
+      "required": ["id", "type"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Z]+-[0-9]{3,}$"
+        },
+        "type": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "typeRef": {
+          "type": "string"
+        },
+        "geometryRef": {
+          "type": "string"
+        },
+        "properties": {
+          "type": "object"
+        },
+        "relationships": {
+          "type": "object"
+        },
+        "extensions": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": false
+    },
+    "moduleRefs": {
+      "type": "object",
+      "properties": {
+        "geometry": {
+          "type": "string"
+        },
+        "normative": {
+          "type": "string"
+        },
+        "provenance": {
+          "type": "string"
+        },
+        "lifecycle": {
+          "type": "string"
+        },
+        "cost": {
+          "type": "string"
+        },
+        "operation": {
+          "type": "string"
+        },
+        "cad": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "references": {
+      "type": "object",
+      "properties": {
+        "ifc43": {
+          "type": "string"
+        },
+        "ifcx": {
+          "type": "string"
+        },
+        "documents": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
