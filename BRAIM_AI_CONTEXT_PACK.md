@@ -2,15 +2,33 @@
 
 ## Версия
 
-- Version: `0.1.0`
-- Date: 2026-09-28
+- Version: `0.2.0`
+- Date: 2026-10-18
 - Intended users: external AI systems, reviewers, developers and research agents
 
 ## Task
 
-Analyze, extend or prototype BRAIM — a research and prototype openBIM platform for construction requirements, spatial entities, planning generation, validation, IFC/Archicad coordination and documentation.
+Analyze, extend or prototype BRAIM and its Building Avatar extension BRAVIM/BAV — a research and prototype openBIM platform for construction requirements, spatial entities, planning generation, validation, IFC/Archicad coordination and documentation.
 
 Do not treat the repository as a completed product. Treat it as a structured set of drafts, hypotheses, schemas and prototypes.
+
+## Product family & naming
+
+| Name | Meaning |
+|---|---|
+| **BRAIM** | Governance platform: artifact registry, provenance, Quality Gate, snapshots, CDE integration |
+| **BRAVIM** | Building Avatar platform |
+| **BAV** | Building Avatar: the building as a verifiable entity |
+| **BAR** | Building Avatar Registry: registry of avatars, versions, evidence and rules |
+| **VAR** | Versioned Avatar Representation: versioned representation for storage, exchange and reproducibility |
+| **IFCA** | Exchange format for BAV |
+| **BRAVO** | Umbrella product suite: BRAIM + BRAVIM/BAV + IFCA |
+
+```text
+BRAVO = BRAIM (governance) + BRAVIM/BAV (building avatar) + IFCA (transport)
+```
+
+A rule is not merely a quotation from a regulation. It is a verifiable statement linked to an official source and executable over BAV.
 
 ## Core rules
 
@@ -24,6 +42,8 @@ Do not treat the repository as a completed product. Treat it as a structured set
 - Mark uncertain reasoning as `PROPOSED` or `NEEDS_REVIEW`.
 - Preserve source passages and conflicts.
 - Do not publish WIP materials as final specifications.
+- Do not treat a Ruleset Package as an official normative document; it is a versioned, source-linked knowledge package.
+- Do not apply a Ruleset Package without pinning its version and content hash.
 
 ## Semantic layers
 
@@ -93,4 +113,6 @@ plan → form → facade → constraints → plan update
 - implement topology-first layout generation;
 - implement geospatial/point-cloud data contracts;
 - prototype the hexagonal swept-loop house;
-- define public/private CDE synchronization.
+- define public/private CDE synchronization;
+- develop BAV, IFCA, Evidence Fragment, Ruleset Package and Treatment Package specifications;
+- keep BAV Local Core version pinning and evidence references consistent.
