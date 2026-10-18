@@ -1,0 +1,488 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/kirsunn/BRAIM-public/ifca-prototype/specs/ifca/bav_extensions_schema_v0_1.json",
+  "title": "BRAVIM BAV Extensions v0.1",
+  "description": "Experimental JSON Schema for BRAVIM-specific Building Avatar extensions: Evidence Fragments, Ruleset Packages and Treatment Packages.",
+  "type": "object",
+  "required": ["bav_extensions"],
+  "properties": {
+    "bav_extensions": {
+      "type": "object",
+      "required": ["format", "version"],
+      "properties": {
+        "format": {
+          "type": "string",
+          "const": "BAV-EXTENSIONS"
+        },
+        "version": {
+          "type": "string",
+          "const": "0.1.0"
+        },
+        "evidence_fragments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/evidenceFragment"
+          }
+        },
+        "ruleset_packages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/rulesetPackage"
+          }
+        },
+        "treatment_packages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/treatmentPackage"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "definitions": {
+    "severity": {
+      "type": "string",
+      "enum": ["required", "recommended", "informational", "assumption"]
+    },
+    "evidenceFragment": {
+      "type": "object",
+      "required": ["evidence_id", "official_url", "accessed_at", "content_hash"],
+      "properties": {
+        "evidence_id": {
+          "type": "string",
+          "pattern": "^EV-[A-Za-z0-9_-]+$"
+        },
+        "official_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "publication_id": {
+          "type": "string"
+        },
+        "document_title": {
+          "type": "string"
+        },
+        "publisher": {
+          "type": "string"
+        },
+        "edition": {
+          "type": "string"
+        },
+        "publish_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "locator": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string"
+            },
+            "value": {
+              "type": "string"
+            }
+          }
+        },
+        "accessed_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "content_hash": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "verification": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "string",
+              "enum": ["unverified", "in_review", "verified", "rejected"]
+            },
+            "verified_by": {
+              "type": "string"
+            },
+            "verified_at": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "ruleCheck": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["numeric_min", "numeric_max", "numeric_range", "existence", "classification", "spatial_relation", "graph_query", "external_calculation", "human_confirmation"]
+        },
+        "target": {
+          "type": "string"
+        },
+        "unit": {
+          "type": "string"
+        },
+        "threshold": {
+          "type": "number"
+        },
+        "min": {
+          "type": "number"
+        },
+        "max": {
+          "type": "number"
+        },
+        "scope": {
+          "type": "string"
+        },
+        "tolerance": {
+          "type": "number"
+        }
+      }
+    },
+    "rule": {
+      "type": "object",
+      "required": ["rule_id", "statement", "severity", "applicability", "check", "evidence_ids"],
+      "properties": {
+        "rule_id": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["draft", "in_review", "published", "deprecated", "superseded"]
+        },
+        "statement": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            },
+            "language": {
+              "type": "string"
+            },
+            "formal": {
+              "type": "string"
+            },
+            "explanation": {
+              "type": "string"
+            }
+          }
+        },
+        "severity": {
+          "$ref": "#/definitions/severity"
+        },
+        "category": {
+          "type": "string"
+        },
+        "subcategory": {
+          "type": "string"
+        },
+        "applicability": {
+          "type": "object",
+          "properties": {
+            "entity_types": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "building_types": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "regions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "lifecycle_stages": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "conditions": {
+              "type": "object"
+            }
+          }
+        },
+        "check": {
+          "$ref": "#/definitions/ruleCheck"
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "relationships": {
+          "type": "object",
+          "properties": {
+            "requires": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "conflicts_with": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "refines": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "replaces": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "related_to": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "lifecycle": {
+          "type": "object",
+          "properties": {
+            "applicable_stages": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "mandatory_from": {
+              "type": "string"
+            },
+            "recheck_on_change": {
+              "type": "boolean"
+            },
+            "recheck_triggers": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "rulesetPackage": {
+      "type": "object",
+      "required": ["package_id", "version", "status", "scope", "rules", "evidence"],
+      "properties": {
+        "package_id": {
+          "type": "string",
+          "pattern": "^RSP-[A-Za-z0-9_-]+$"
+        },
+        "version": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["draft", "in_review", "verified", "published", "deprecated", "superseded"]
+        },
+        "published_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "publisher": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "role": {
+              "type": "string"
+            }
+          }
+        },
+        "content_hash": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "supersedes": {
+          "type": "string"
+        },
+        "scope": {
+          "type": "object",
+          "properties": {
+            "country": {
+              "type": "string"
+            },
+            "region": {
+              "type": "string"
+            },
+            "building_type": {
+              "type": "string"
+            },
+            "construction_type": {
+              "type": "string"
+            },
+            "lifecycle_stages": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "disciplines": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "rules": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/rule"
+          }
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/evidenceFragment"
+          }
+        },
+        "dependencies": {
+          "type": "object",
+          "properties": {
+            "requires": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "conflicts_with": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "replaces": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "lifecycle": {
+          "type": "object",
+          "properties": {
+            "applicable_stages": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "mandatory_from": {
+              "type": "string"
+            },
+            "recheck_on_change": {
+              "type": "boolean"
+            }
+          }
+        },
+        "audit": {
+          "type": "object",
+          "properties": {
+            "created_at": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "created_by": {
+              "type": "string"
+            },
+            "change_log": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "treatmentPackage": {
+      "type": "object",
+      "required": ["package_id", "goal", "affected_bav_ids", "operations", "approval_status"],
+      "properties": {
+        "package_id": {
+          "type": "string",
+          "pattern": "^PKG-[0-9]{3,}$"
+        },
+        "goal": {
+          "type": "string"
+        },
+        "diagnosis_id": {
+          "type": "string"
+        },
+        "affected_bav_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "operations": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "rules_checked": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "impact_preview": {
+          "type": "object"
+        },
+        "approval_status": {
+          "type": "string",
+          "enum": ["draft", "proposed", "approved", "rejected", "applied", "cancelled"]
+        },
+        "approved_by": {
+          "type": "string"
+        },
+        "approved_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    }
+  }
+}
