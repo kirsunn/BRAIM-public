@@ -163,7 +163,7 @@ Transition Request:
 
 ## 8. Формат данных
 
-Schema: [`braim-spec/schemas/lifecycle-state.json`](./braim-spec/schemas/lifecycle-state.json) (`id: lc_…`).
+Schema: [`braim-spec/schemas/lifecycle-state.json`](../../braim-spec/schemas/lifecycle-state.json) (`id: lc_…`).
 
 Пример LC Statement:
 

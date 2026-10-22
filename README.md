@@ -36,7 +36,7 @@ BRAV = IFCA + BAR + BAV + RAG + BAG
 - **BAG** records every important action and decision.
 - A human approves changes.
 
-See [`BRAVO_ARCHITECTURE_V0_4.md`](./BRAVO_ARCHITECTURE_V0_4.md) and [`BRAVO_ARCHITECTURE_V0_4_UPDATE.md`](./BRAVO_ARCHITECTURE_V0_4_UPDATE.md).
+See [`BRAVO_ARCHITECTURE_V0_4.md`](docs/architecture/BRAVO_ARCHITECTURE_V0_4.md) and [`BRAVO_ARCHITECTURE_V0_4_UPDATE.md`](docs/history/BRAVO_ARCHITECTURE_V0_4_UPDATE.md).
 
 ## Naming & Product Layers
 
@@ -80,12 +80,12 @@ BRAIM не устаревает: он остаётся governance-слоем. BR
 
 | Документ | Описание |
 |---|---|
-| [`BRAIM_Concept_v1.1.md`](./BRAIM_Concept_v1.1.md) | Формализованная концепция продукта, архитектура, решения, roadmap. |
-| [`BRAIM_Handover_Package_v1.0_2026-09-30.md`](./BRAIM_Handover_Package_v1.0_2026-09-30.md) | Основной пакет передачи (handover) для пилота. |
-| [`BRAIM_Master_Context_1.0_2026-09-30.md`](./BRAIM_Master_Context_1.0_2026-09-30.md) | Единый рабочий архитектурный baseline (локальный master). |
-| [`BRAIM_STATUS_AND_OPEN_QUESTIONS.md`](./BRAIM_STATUS_AND_OPEN_QUESTIONS.md) | Текущий статус и открытые вопросы. |
-| [`BRAVO_ARCHITECTURE_V0_4.md`](./BRAVO_ARCHITECTURE_V0_4.md) | Текущая архитектура BRAVO v0.4. |
-| [`BRAVO_PRODUCT_OVERVIEW.md`](./BRAVO_PRODUCT_OVERVIEW.md) | Простое описание BRAVO для неспециалистов. |
+| [`BRAIM_Concept_v1.1.md`](docs/concept/BRAIM_Concept_v1.1.md) | Формализованная концепция продукта, архитектура, решения, roadmap. |
+| [`BRAIM_Handover_Package_v1.0_2026-09-30.md`](docs/history/BRAIM_Handover_Package_v1.0_2026-09-30.md) | Основной пакет передачи (handover) для пилота. |
+| [`BRAIM_Master_Context_1.0_2026-09-30.md`](docs/history/BRAIM_Master_Context_1.0_2026-09-30.md) | Единый рабочий архитектурный baseline (локальный master). |
+| [`BRAIM_STATUS_AND_OPEN_QUESTIONS.md`](docs/status/BRAIM_STATUS_AND_OPEN_QUESTIONS.md) | Текущий статус и открытые вопросы. |
+| [`BRAVO_ARCHITECTURE_V0_4.md`](docs/architecture/BRAVO_ARCHITECTURE_V0_4.md) | Текущая архитектура BRAVO v0.4. |
+| [`BRAVO_PRODUCT_OVERVIEW.md`](docs/concept/BRAVO_PRODUCT_OVERVIEW.md) | Простое описание BRAVO для неспециалистов. |
 | [`BRAIM_BRAVIM_PROJECT_CONTEXT_FOR_REVIEW.md`](./BRAIM_BRAVIM_PROJECT_CONTEXT_FOR_REVIEW.md) | Контекст проекта для внешней критики. |
 
 ## Что такое BRAIM
