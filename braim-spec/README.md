@@ -65,9 +65,9 @@ braim-spec/
 
 ## Связанные документы
 
-- [BRAIM_Concept_v1.1.md](../BRAIM_Concept_v1.1.md)
-- [BRAIM_STATUS_AND_OPEN_QUESTIONS.md](../BRAIM_STATUS_AND_OPEN_QUESTIONS.md)
-- [BRAIM_Handover_Package_v1.0_2026-09-30.md](../BRAIM_Handover_Package_v1.0_2026-09-30.md)
+- [BRAIM_Concept_v1.1.md](../docs/concept/BRAIM_Concept_v1.1.md)
+- [BRAIM_STATUS_AND_OPEN_QUESTIONS.md](../docs/status/BRAIM_STATUS_AND_OPEN_QUESTIONS.md)
+- [BRAIM_Handover_Package_v1.0_2026-09-30.md](../docs/history/BRAIM_Handover_Package_v1.0_2026-09-30.md)
 
 ---
 

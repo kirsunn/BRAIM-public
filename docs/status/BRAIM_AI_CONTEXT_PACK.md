@@ -1,6 +1,6 @@
 # BRAVO v0.4 Architecture Update
 
-> **Architecture update v0.4:** BRAIM is hosted inside BRAVIUM-Planet. The BRAV container is `IFCA + BAR + BAV + RAG + BAG`. BAV is validated against RAG; BAG records activity and decisions. See [`BRAVO_ARCHITECTURE_V0_4.md`](./BRAVO_ARCHITECTURE_V0_4.md).
+> **Architecture update v0.4:** BRAIM is hosted inside BRAVIUM-Planet. The BRAV container is `IFCA + BAR + BAV + RAG + BAG`. BAV is validated against RAG; BAG records activity and decisions. See [`BRAVO_ARCHITECTURE_V0_4.md`](../architecture/BRAVO_ARCHITECTURE_V0_4.md).
 
 # BRAIM AI Context Pack
 
@@ -53,7 +53,7 @@ A rule is not merely a quotation from a regulation. It is a verifiable statement
 
 ## Semantic layers
 
-> Канон — [`BRAIM_Layer_Model_v0_1.md`](./BRAIM_Layer_Model_v0_1.md) (v0.1.2). Старые коды L6-X graph, L7-O openings, L8-I infrastructure, L11-V generator, L14-E operation устарели и не используются.
+> Канон — [`BRAIM_Layer_Model_v0_1.md`](../architecture/BRAIM_Layer_Model_v0_1.md) (v0.1.2). Старые коды L6-X graph, L7-O openings, L8-I infrastructure, L11-V generator, L14-E operation устарели и не используются.
 
 ```text
 L0-N normative

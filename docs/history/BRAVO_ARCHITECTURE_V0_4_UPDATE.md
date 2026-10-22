@@ -52,4 +52,4 @@ BAG records every important action and decision.
 A human approves changes.
 ```
 
-The full specification is available in [`BRAVO_ARCHITECTURE_V0_4.md`](./BRAVO_ARCHITECTURE_V0_4.md).
+The full specification is available in [`BRAVO_ARCHITECTURE_V0_4.md`](../architecture/BRAVO_ARCHITECTURE_V0_4.md).

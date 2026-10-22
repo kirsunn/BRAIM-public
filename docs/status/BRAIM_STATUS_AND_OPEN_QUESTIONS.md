@@ -25,18 +25,18 @@
 |---|---|---|---|
 | P0-01 | Architecture freeze (Master Context 1.0) | 2026-10-04 | ✅ Done |
 | P0-02 | Публикация Concept v1.0 | 2026-10-04 | ✅ Done |
-| P0-03 | JSON Schema: artifact, snapshot, decision, event | 2026-10-11 | ✅ Done (2026-10-15: опубликованы в [`braim-spec/schemas/`](./braim-spec/schemas/) — artifact, snapshot, decision, event, validation-result, policy-manifest) |
+| P0-03 | JSON Schema: artifact, snapshot, decision, event | 2026-10-11 | ✅ Done (2026-10-15: опубликованы в [`braim-spec/schemas/`](../../braim-spec/schemas/) — artifact, snapshot, decision, event, validation-result, policy-manifest) |
 | P0-04 | BRAIM-LIMS 0.1 (naming & versioning policy) | 2026-10-18 | 📋 Planned |
 | P0-05 | Standards/Claims/Grants registers (публичные) | 2026-10-18 | 📋 Planned |
 | P0-06 | Golden Corpus: структура и benchmark protocol | 2026-10-25 | 📋 Planned |
 | P0-07 | Toolchain SBOM и pinning (IfcOpenShell, IfcTester, Neo4j) | 2026-10-25 | 📋 Planned |
 | P0-08 | CDE capability discovery (первый пилот) | 2026-11-01 | 📋 Planned |
-| P0-09 | Lifecycle Model v0.1 (scoped LC, 6 статусов проверки, переходы как Decision+Snapshot) | 2026-10-15 | ✅ Done ([`BRAIM_Lifecycle_Model_v0_1.md`](./BRAIM_Lifecycle_Model_v0_1.md) + schema `lifecycle-state.json`) |
-| P0-10 | Classification Model v0.1 (фасетность ISO 12006-2; пилот FUNCTION+SPACE+DISCIPLINE; КСИ = таблица экспорта) | 2026-10-15 | ✅ Done ([`BRAIM_Classification_Model_v0_1.md`](./BRAIM_Classification_Model_v0_1.md) + schema `classification-assignment.json`) |
-| P0-11 | ADR-009: IFC5 sandbox + composition-native alignment (IFC5/IFC X — слои данных; production = IFC 4.x) | 2026-10-15 | ✅ Done ([`docs/adr/ADR-009`](./docs/adr/ADR-009_ifc5_sandbox_and_composition_alignment.md) — первый из 14 обязательных ADR) |
-| P0-12 | ADR-015: bSDD как базовый словарь (ISO 12006-3/23386; локальный реестр + bSDD-совместимость; с Phase 1; pinning словарей) | 2026-10-15 | ✅ Done ([`docs/adr/ADR-015`](./docs/adr/ADR-015_bsdd_as_base_dictionary.md); Attribute Registry → v0.1.1 `bsdd_property_ref`; Classification Model → v0.1.1) |
-| P0-13 | ADR-016: BRAIM Composition Format — IFCX-совместимая слоистая сериализация (path-узлы, imports, precedence внутри владельца; Project Package слоями — deliverable Phase 1) | 2026-10-15 | ✅ Done ([`docs/adr/ADR-016`](./docs/adr/ADR-016_ifcx_aligned_composition_format.md); референс IFC5-development → `_library/ifc5-reference`) |
-| P0-14 | **Concept v1.1**: §1.3 два режима, §1.4 вертикали, §1.5 guardrails G-1..G-7, D-07..D-11, §4.2 +стандарты, §8 EIM → G-D-C-M-P-R-V, §9.2 вехи под финансовую лестницу | 2026-10-15 | ✅ Done ([`BRAIM_Concept_v1.1.md`](./BRAIM_Concept_v1.1.md)) |
+| P0-09 | Lifecycle Model v0.1 (scoped LC, 6 статусов проверки, переходы как Decision+Snapshot) | 2026-10-15 | ✅ Done ([`BRAIM_Lifecycle_Model_v0_1.md`](../architecture/BRAIM_Lifecycle_Model_v0_1.md) + schema `lifecycle-state.json`) |
+| P0-10 | Classification Model v0.1 (фасетность ISO 12006-2; пилот FUNCTION+SPACE+DISCIPLINE; КСИ = таблица экспорта) | 2026-10-15 | ✅ Done ([`BRAIM_Classification_Model_v0_1.md`](../registry/BRAIM_Classification_Model_v0_1.md) + schema `classification-assignment.json`) |
+| P0-11 | ADR-009: IFC5 sandbox + composition-native alignment (IFC5/IFC X — слои данных; production = IFC 4.x) | 2026-10-15 | ✅ Done ([`docs/adr/ADR-009`](../adr/ADR-009_ifc5_sandbox_and_composition_alignment.md) — первый из 14 обязательных ADR) |
+| P0-12 | ADR-015: bSDD как базовый словарь (ISO 12006-3/23386; локальный реестр + bSDD-совместимость; с Phase 1; pinning словарей) | 2026-10-15 | ✅ Done ([`docs/adr/ADR-015`](../adr/ADR-015_bsdd_as_base_dictionary.md); Attribute Registry → v0.1.1 `bsdd_property_ref`; Classification Model → v0.1.1) |
+| P0-13 | ADR-016: BRAIM Composition Format — IFCX-совместимая слоистая сериализация (path-узлы, imports, precedence внутри владельца; Project Package слоями — deliverable Phase 1) | 2026-10-15 | ✅ Done ([`docs/adr/ADR-016`](../adr/ADR-016_ifcx_aligned_composition_format.md); референс IFC5-development → `_library/ifc5-reference`) |
+| P0-14 | **Concept v1.1**: §1.3 два режима, §1.4 вертикали, §1.5 guardrails G-1..G-7, D-07..D-11, §4.2 +стандарты, §8 EIM → G-D-C-M-P-R-V, §9.2 вехи под финансовую лестницу | 2026-10-15 | ✅ Done ([`BRAIM_Concept_v1.1.md`](../concept/BRAIM_Concept_v1.1.md)) |
 | P0-15 | Схема validation-result.json: добавить `coverage_statement` (G-3) и `scope_element_ids`/инкрементальная инвалидация (G-4) | Phase 1 | 📋 Planned (реализация вместе с обёрткой IfcTester → validation-result) |
 | P0-16 | Threat model: раздел DataBoundaryPolicy (G-6) — CLIENT_CONFIDENTIAL по умолчанию, публичные ИИ-сервисы запрещены | Phase 1 | 📋 Planned (расширение docs/security/THREAT_MODEL_v0_1.md) |
 | P0-17 | **BRAIM Pset v0.1** — собственный сет свойств поверх authoring-моделей (аналог RusSet_AGR): классификация, ТЭП-атрибуты, LC-refs; IDs/GUIDs автора произвольны — BRAIM Pset накладывается сверху | Phase 1–2 | 📋 Planned (решение автора 2026-10-16) |
@@ -108,7 +108,7 @@
 | ID | Вопрос | Влияние | Приоритет | Ответственный |
 |---|---|---|---|---|
 | AQ-14 | СП 50.13330.2024: какие климатические зоны для пилота? | Thermal policy, Фаза 2 | 🟡 Средний | Domain expert |
-| AQ-15 | Классификация: КСИ vs Uniclass vs другая | Classification policy, Фаза 1 | ✅ Решено 2026-10-15 ([Classification Model](./BRAIM_Classification_Model_v0_1.md) CL-01..07: фасетная методология ISO 12006-2; таблицы — конфигурация; КСИ = таблица экспорта) | — |
+| AQ-15 | Классификация: КСИ vs Uniclass vs другая | Classification policy, Фаза 1 | ✅ Решено 2026-10-15 ([Classification Model](../registry/BRAIM_Classification_Model_v0_1.md) CL-01..07: фасетная методология ISO 12006-2; таблицы — конфигурация; КСИ = таблица экспорта) | — |
 
 ### 2.6. Security & Licensing
 
@@ -124,8 +124,8 @@
 
 | ID | Решение | Варианты | Дедлайн | Статус |
 |---|---|---|---|---|
-| AD-01 | Message broker | NATS / RabbitMQ / другой | 2026-10-18 | ✅ Решено ([ADR-013](./docs/adr/ADR-013_full_stack.md): NATS, Phase 3) |
-| AD-02 | Transactional registry | PostgreSQL / другой SQL | 2026-10-18 | ✅ Решено ([ADR-013](./docs/adr/ADR-013_full_stack.md): PostgreSQL 16) |
+| AD-01 | Message broker | NATS / RabbitMQ / другой | 2026-10-18 | ✅ Решено ([ADR-013](../adr/ADR-013_full_stack.md): NATS, Phase 3) |
+| AD-02 | Transactional registry | PostgreSQL / другой SQL | 2026-10-18 | ✅ Решено ([ADR-013](../adr/ADR-013_full_stack.md): PostgreSQL 16) |
 | AD-03 | Первый пилот CDE | Pilot-BIM / Renga / другой | 2026-10-11 | ✅ **Решено 2026-10-15: заказчиком будем мы.** Фолбэк (собственное файловое хранилище + BCFzip/file-drop) — primary для Phase 1; пилотный объект — собственная АГР-модель; внешний CDE заказчика подключается адаптером в будущем (см. AQ-11/12) |
 | AD-04 | OIDC provider | Keycloak / Auth0 / другой | 2026-10-25 | ⏳ Pending (не блокирует Phase 1: solo-режим) |
 
@@ -139,7 +139,7 @@
 | R-02 | CDE API mismatch | Capability manifest + BCF/file fallback | 🟡 Мониторинг |
 | R-03 | Experimental merge (ifcmerge) | Report-only diff; manual resolution; Golden Corpus | 🟡 Мониторинг |
 | R-11 | KPI overclaim | R&D target label + benchmark protocol | 🟡 Мониторинг |
-| R-16 | Threat model не определён | Draft подготовлен 2026-10-15 ([`docs/security/THREAT_MODEL_v0_1.md`](./docs/security/THREAT_MODEL_v0_1.md)) — требует подтверждения автора до первого артефакта пилота | 🟡 Draft (было 🔴 Блокирующий) |
+| R-16 | Threat model не определён | Draft подготовлен 2026-10-15 ([`docs/security/THREAT_MODEL_v0_1.md`](../security/THREAT_MODEL_v0_1.md)) — требует подтверждения автора до первого артефакта пилота | 🟡 Draft (было 🔴 Блокирующий) |
 | R-17 | Licence conflict (LGPL/GPL) | SBOM + legal review перед пилотом | 🟡 Мониторинг |
 
 ---
@@ -172,7 +172,7 @@
 8. 🎯 **Найти заказ или пример объекта для подготовки модели к АГР** (F-08) — демо: «проверка АГР-модели по требованиям».
 9. ✅ Локальный ИИ-слой: Ollama + qwen3b/7b развёрнуты (G-6 технически реализован); качество Лингвиста — 7B (3B — нижняя планка).
 
-> **Финансирование:** заявка на соцконтракт подана; ООО — по факту участия/выигрыша грантов. Вехи — [`BRAIM_Concept_v1.1.md`](./BRAIM_Concept_v1.1.md) §9.2 и [`docs/funding/FUNDING_STATUS.md`](./docs/funding/FUNDING_STATUS.md).
+> **Финансирование:** заявка на соцконтракт подана; ООО — по факту участия/выигрыша грантов. Вехи — [`BRAIM_Concept_v1.1.md`](../concept/BRAIM_Concept_v1.1.md) §9.2 и [`docs/funding/FUNDING_STATUS.md`](../funding/FUNDING_STATUS.md).
 
 ---
 
@@ -219,8 +219,8 @@
 
 - **Брифинг по распылению; работа по блокерам.**
 - AD-03 решён: **заказчиком будем мы** — фолбэк-хранилище (файл-drop + BCFzip) как primary для Phase 1; пилотный объект — собственная АГР-модель. AQ-11 закрыт, AQ-12 понижен.
-- R-16: draft threat model ([`docs/security/THREAT_MODEL_v0_1.md`](./docs/security/THREAT_MODEL_v0_1.md)) — открытые решения: бэкап, фолбэк-хранилище, шифрование диска.
-- Кандидаты проверок Phase 1 ([`docs/phase1/CHECKS_LIST_v0_1.md`](./docs/phase1/CHECKS_LIST_v0_1.md)): 6 готовы (braim.py + GEO-GRID), 4 — гибрид IDS + свои критерии (проёмы, проходы, ФЗ-123, МГН) со статусом `needs_source`; СП 59.13330 (МГН) — добавить в Standards Register.
+- R-16: draft threat model ([`docs/security/THREAT_MODEL_v0_1.md`](../security/THREAT_MODEL_v0_1.md)) — открытые решения: бэкап, фолбэк-хранилище, шифрование диска.
+- Кандидаты проверок Phase 1 ([`docs/phase1/CHECKS_LIST_v0_1.md`](../phase1/CHECKS_LIST_v0_1.md)): 6 готовы (braim.py + GEO-GRID), 4 — гибрид IDS + свои критерии (проёмы, проходы, ФЗ-123, МГН) со статусом `needs_source`; СП 59.13330 (МГН) — добавить в Standards Register.
 - AD-01/02/04 понижены: не блокируют Phase 1.
 
 ### 0.2.6 — 2026-10-15

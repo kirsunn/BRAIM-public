@@ -358,7 +358,7 @@ V — Verification / field verification (V0–V5)
 
 ---
 
-Написанные ADR: [ADR-009](./docs/adr/ADR-009_ifc5_sandbox_and_composition_alignment.md) (IFC5 sandbox + composition alignment), [ADR-015](./docs/adr/ADR-015_bsdd_as_base_dictionary.md) (bSDD как базовый словарь), [ADR-016](./docs/adr/ADR-016_ifcx_aligned_composition_format.md) (IFCX-совместимая сериализация).
+Написанные ADR: [ADR-009](../adr/ADR-009_ifc5_sandbox_and_composition_alignment.md) (IFC5 sandbox + composition alignment), [ADR-015](../adr/ADR-015_bsdd_as_base_dictionary.md) (bSDD как базовый словарь), [ADR-016](../adr/ADR-016_ifcx_aligned_composition_format.md) (IFCX-совместимая сериализация).
 
 ---
 
